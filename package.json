@@ -1,0 +1,40 @@
+{
+  "name": "nodejs_rest_api_jwt_roles_mongodb",
+  "type": "commonjs",
+  "version": "1.0.0",
+  "description": "tutorial",
+  "main": "index.js",
+  "scripts": {
+    "dev": "babel-node src/index.js",
+    "build": "babel src --out-dir build",
+    "start": "nodemon src/index.js",
+    "start__": "nodemon src/index.js --exec babel-node",
+    "start_": "node build/index.js"
+  },
+  "keywords": [],
+  "author": "eon",
+  "license": "ISC",
+  "dependencies": {
+    "@babel/cli": "7.16.0",
+    "@babel/core": "7.16.0",
+    "@babel/node": "7.16.0",
+    "@babel/preset-env": "7.16.0",
+    "axios": "^0.27.2",
+    "bcryptjs": "2.4.3",
+    "body-parser": "^1.20.0",
+    "cors": "2.8.5",
+    "dotenv": "10.0.0",
+    "express": "4.17.1",
+    "helmet": "4.6.0",
+    "jsonwebtoken": "8.5.1",
+    "mongoose": "6.0.12",
+    "morgan": "1.10.0",
+    "mysql": "^2.18.1",
+    "pg": "^8.7.3",
+    "socket.io": "^4.5.1",
+    "socket.io-client": "^4.5.1"
+  },
+  "devDependencies": {
+    "nodemon": "2.0.14"
+  }
+}
