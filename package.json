@@ -5,11 +5,11 @@
   "description": "tutorial",
   "main": "index.js",
   "scripts": {
-    "dev": "babel-node src/index.js",
+    "dev": "babel-node src/back.js",
     "build": "babel src --out-dir build",
-    "start": "nodemon src/index.js",
-    "start__": "nodemon src/index.js --exec babel-node",
-    "start_": "node build/index.js"
+    "start": "nodemon src/back.js",
+    "start__": "nodemon src/back.js --exec babel-node",
+    "start_": "node build/back.js"
   },
   "keywords": [],
   "author": "eon",
@@ -24,17 +24,21 @@
     "body-parser": "^1.20.0",
     "cors": "2.8.5",
     "dotenv": "10.0.0",
-    "express": "4.17.1",
+    "express": "^4.18.2",
+    "express-fileupload": "^1.4.0",
     "helmet": "4.6.0",
     "jsonwebtoken": "8.5.1",
-    "mongoose": "6.0.12",
+    "moment": "^2.29.3",
+    "mongoose": "^6.8.0",
     "morgan": "1.10.0",
     "mysql": "^2.18.1",
+    "nodemailer": "^6.9.1",
     "pg": "^8.7.3",
-    "socket.io": "^4.5.1",
-    "socket.io-client": "^4.5.1"
+    "read-excel-file": "^5.4.4",
+    "sprintf": "^0.1.5",
+    "xlsx": "^0.18.5"
   },
   "devDependencies": {
-    "nodemon": "2.0.14"
+    "nodemon": "^2.0.19"
   }
 }

@@ -5,6 +5,5 @@ module.exports = {
         user: process.env.DB_USER_MYSQL,
         password: process.env.DB_PASSWORD_MYSQL,
         database: process.env.DB_NAME_MYSQL,
-
     }
 }

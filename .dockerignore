@@ -1,0 +1,9 @@
+Dockerfile
+.dockerignore
+.gitignore
+.git
+/node_modules
+.env
+nohup.out
+.vscode/
+
