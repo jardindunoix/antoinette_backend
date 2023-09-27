@@ -8,7 +8,7 @@ const { returnAccessTokenForItemId } = require('../services/accessToken');
 module.exports.getOperationsAfterGlobalInvoice = (a) => {
     (async function (invoiceNumber) {
         try {
-
+ 
             const list = await pool_pg.query(sprintf(getListFromInvoiceTable, invoiceNumber));
             const ownerIds = await pool_pg.query(getOwnerIds);
 
