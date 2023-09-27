@@ -8,6 +8,9 @@ const sprintf = require('sprintf');
 module.exports.getOperationsAfterGlobal = (a) => {
     (async function (data) {
         try {
+
+            console.log(data)
+
             await pool_pg.query('truncate analisis_operaciones_temp;');
             await pool_pg.query('truncate analisis_previo_operaciones_temp;');
             callOperations(data)
@@ -58,7 +61,6 @@ function returnOperation(a, b, c, d, e, f, g, h) {
                 await insertTransitorio(`${sugarboo['paging']['total']}`, fecha1, fecha2, usrId, mlcItem, inventory_id);
                 if (sugarboo['paging']['total'] > 0) {
                     /* analisis_operaciones */
-                    console.log(sugarboo)
                     await insertData(sugarboo, fecha1, fecha2, usrId, mlcItem, inventory_id);
                 }
             } else {
