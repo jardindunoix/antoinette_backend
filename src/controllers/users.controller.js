@@ -152,7 +152,7 @@ const statistics = async (req, res) => {
  TESTYNQN2K5C | 
  TESTQZ6KDYZG | TG-62dac49765cfd500139762ad-764560202
  MAMA6075595  | 
-  */
+ */
 
   const usblTrading = await pool_pg.query(`
             SELECT 
@@ -251,12 +251,12 @@ const listGrantedUsersAdmin = async (req, res) => {
 /* list of items mlc */
 const singleMkpl = async (req, res) => {
   try {
+
+
     const { refresh, mlc } = await req.body;
     // const mlcData = await pool_pg.query(`
     // SELECT * FROM mlc_variations WHERE id_mlc = '${mlc}'
     // ;`);
-
-
     // mlcData['rows'].forEach((q) => {
     //   console.log(q['id_mlc'], q['cbt_item_id']);
     // });
@@ -339,8 +339,24 @@ const sellerInvoiceDetails = async (req, res) => {
 
 /* list of operations */
 const getOperaciones = async (req, res) => {
-  const { usr_id, sell_Id, inventID, refToken, mkpl_id } = req.body;
-  const data = { inventory_id: inventID, seller_id: sell_Id, refToken, usrId: usr_id, mlcItem: mkpl_id };
+  const { 
+    usr_id, 
+    sell_Id, 
+    inventID, 
+    inventID_variations, 
+    refToken, 
+    mkpl_id } = req.body;
+
+  const data = { 
+    inventory_id: inventID, 
+    inventory_id_variations: inventID_variations,
+    seller_id: sell_Id, 
+    refToken, 
+    usrId: usr_id, 
+    mlcItem: mkpl_id };
+
+  console.log(data)
+
   await getOperationsAfterGlobal(data);
   res.status(200).send('ok');
 }

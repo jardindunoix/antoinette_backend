@@ -9,7 +9,7 @@ module.exports.returnAccessTokenForItemId = async (urlAcTok) => {
       .then(data => data).catch(err => console.log(`Error en el catch del return access toekn`, err['response']['data']['message']));
     return accessToken
   } catch (error) {
-    console.log(`Error en el return acces toekene`)
+    console.log(`Error en el return module.exports.returnAccessTokenForItemId`)
   }
 }
 

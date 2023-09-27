@@ -60,6 +60,7 @@ function returnOperation(a, b, c, d, e, f, g, h) {
                 await insertTransitorio(`${sugarboo['paging']['total']}`, fecha1, fecha2, usrId, mlcItem, inventory_id);
                 if (sugarboo['paging']['total'] > 0) {
                     /* analisis_operaciones */
+                    console.log(sugarboo)
                     await insertData(sugarboo, fecha1, fecha2, usrId, mlcItem, inventory_id);
                 }
             } else {
