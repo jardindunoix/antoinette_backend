@@ -8,9 +8,6 @@ const sprintf = require('sprintf');
 module.exports.getOperationsAfterGlobal = (a) => {
     (async function (data) {
         try {
-
-            console.log("datadatadatadatadatadatadata",data)
-
             await pool_pg.query('truncate analisis_operaciones_temp;');
             await pool_pg.query('truncate analisis_previo_operaciones_temp;');
             callOperations(data)
@@ -21,6 +18,9 @@ module.exports.getOperationsAfterGlobal = (a) => {
 const callOperations = (a) => {
     (async function (data_) {
         try {
+        
+        console.log("holaholaholaholaholaholaholaholahola",data_)
+        
             const { inventory_id, seller_id, refToken, usrId, mlcItem } = data_;
             const aToken_ = await returnAccessTokenForItemId(refToken);
             const aToken = aToken_['data']['access_token'] ? aToken_['data']['access_token'] : '';
