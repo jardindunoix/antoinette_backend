@@ -339,6 +339,9 @@ const sellerInvoiceDetails = async (req, res) => {
 
 /* list of operations */
 const getOperaciones = async (req, res) => {
+
+  // hola desde local
+
   const { 
     usr_id, 
     sell_Id, 
@@ -355,7 +358,7 @@ const getOperaciones = async (req, res) => {
     usrId: usr_id, 
     mlcItem: mkpl_id };
 
-  console.log(data)
+  // console.log(data)
 
   await getOperationsAfterGlobal(data);
   res.status(200).send('ok');
