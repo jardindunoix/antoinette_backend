@@ -342,27 +342,28 @@ const getOperaciones = async (req, res) => {
 
   // hola desde local OTRA VEZ
 
-  const { 
-    usr_id, 
-    sell_Id, 
-    inventID, 
-    inventID_variations, 
-    refToken, 
+  const {
+    usr_id,
+    sell_Id,
+    inventID,
+    inventID_variations,
+    refToken,
     mkpl_id } = req.body;
 
-  const data = { 
-    inventory_id: inventID, 
+  const data = {
+    inventory_id: inventID,
     inventory_id_variations: inventID_variations,
-    seller_id: sell_Id, 
-    refToken, 
-    usrId: usr_id, 
-    mlcItem: mkpl_id };
+    seller_id: sell_Id.split('-')[0],
+    refToken,
+    usrId: usr_id,
+    mlcItem: mkpl_id
+  };
 
   // console.log(data)
 
   await getOperationsAfterGlobal(data);
   res.status(200).send('ok');
-} 
+}
 
 /* list of operations */
 const getOperacionesItems = async (req, res) => {

@@ -18,14 +18,10 @@ module.exports.getOperationsAfterGlobal = (a) => {
 const callOperations = (a) => {
     (async function (data_) {
         try {
-
-            console.log("holaholaholaholaholaholaholaholahola", data_)
-
-            const { inventory_id, seller_id, refToken, usrId, mlcItem
-            } = data_;
+            const { inventory_id, seller_id, refToken, usrId, mlcItem } = data_;
             const aToken_ = await returnAccessTokenForItemId(refToken);
             const aToken = aToken_['data']['access_token'] ? aToken_['data']['access_token'] : '';
-            const urlBase = sprintf(callOperaciones, seller_id.split('-')[1], inventory_id);
+            const urlBase = sprintf(callOperaciones, seller_id, inventory_id);
             let fecha2 = getFechaHoy();
             let fecha1 = returnDate(fecha2, -60);
             const ciclesBack = 12;
