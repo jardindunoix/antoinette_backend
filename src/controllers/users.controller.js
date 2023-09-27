@@ -350,6 +350,8 @@ const getOperaciones = async (req, res) => {
     refToken,
     mkpl_id } = req.body;
 
+  console.log(sell_Id)
+  
   const data = {
     inventory_id: inventID,
     inventory_id_variations: inventID_variations,
