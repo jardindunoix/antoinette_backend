@@ -340,7 +340,7 @@ const sellerInvoiceDetails = async (req, res) => {
 /* list of operations */
 const getOperaciones = async (req, res) => {
 
-  // hola desde local
+  // hola desde local OTRA VEZ
 
   const { 
     usr_id, 
