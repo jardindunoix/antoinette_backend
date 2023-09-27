@@ -24,14 +24,15 @@ const callOperations = (a) => {
             const urlBase = sprintf(callOperaciones, seller_id, inventory_id);
             let fecha2 = getFechaHoy();
             let fecha1 = returnDate(fecha2, -60);
-            const ciclesBack = 12;
+            const ciclesBack = 36; // 12
+            const timeDelay = 1000; // 250
 
             (function recorreCiclos(n) {
                 returnOperation(urlBase, fecha1, fecha2, aToken, usrId, mlcItem, (n + 1), inventory_id);
                 fecha2 = fecha1;
                 fecha1 = returnDate(fecha2, -60);
                 n++;
-                if (n < ciclesBack) setTimeout(recorreCiclos, 250, n);
+                if (n < ciclesBack) setTimeout(recorreCiclos, timeDelay, n);
             }(0));
         } catch (error) { console.log(`error en retorna operaciones ++_+_+_+_+-=-=-=-`, error) }
     })(a);
