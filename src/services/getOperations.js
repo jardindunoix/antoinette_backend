@@ -28,8 +28,7 @@ const callOperations = (a) => {
             const timeDelay = 250; // 250
 
             (function recorreCiclos(n) {
-                console.log(fecha1, fecha2)
-                // returnOperation(urlBase, fecha1, fecha2, aToken, usrId, mlcItem, (n + 1), inventory_id);
+                returnOperation(urlBase, fecha1, fecha2, aToken, usrId, mlcItem, (n + 1), inventory_id);
                 fecha2 = fecha1;
                 fecha1 = returnDate(fecha2, -60);
                 n++;
@@ -42,6 +41,9 @@ const callOperations = (a) => {
 function returnOperation(a, b, c, d, e, f, g, h) {
     (async function (urlBase, fecha1, fecha2, accTok, usrId, mlcItem, n, inventory_id) {
         try {
+
+            console.log(urlBase, fecha1, fecha2, accTok, usrId, mlcItem, n, inventory_id)
+
             const sugarboo = await fetch.get(`${urlBase}${fecha1}&date_to=${fecha2}`, {
                 headers: { "Content-Type": "application/json", Authorization: `Bearer ${accTok}` }
             }).then(async respo => {
@@ -66,6 +68,8 @@ function returnOperation(a, b, c, d, e, f, g, h) {
                 /* analisis_previo_operaciones */
                 await insertTransitorio(`valor llega null`, fecha1, fecha2, usrId, mlcItem, inventory_id);
             }
+
+
         } catch (error) { console.log(`Error return operation`, error) }
     })(a, b, c, d, e, f, g, h);
 }
