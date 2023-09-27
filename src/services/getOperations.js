@@ -42,7 +42,7 @@ function returnOperation(a, b, c, d, e, f, g, h) {
     (async function (urlBase, fecha1, fecha2, accTok, usrId, mlcItem, n, inventory_id) {
         try {
 
-            console.log(urlBase, fecha1, fecha2, accTok, usrId, mlcItem, n, inventory_id)
+            console.log(accTok,)
 
             const sugarboo = await fetch.get(`${urlBase}${fecha1}&date_to=${fecha2}`, {
                 headers: { "Content-Type": "application/json", Authorization: `Bearer ${accTok}` }
@@ -69,6 +69,17 @@ function returnOperation(a, b, c, d, e, f, g, h) {
                 await insertTransitorio(`valor llega null`, fecha1, fecha2, usrId, mlcItem, inventory_id);
             }
 
+            /* 
+            {
+    "message": "Too many requests",
+    "error": "too_many_requests",
+    "status": 429,
+    "cause": []
+}
+            */
+
+            // https://api.mercadolibre.com/marketplace/stock/fulfillment/operations/search?seller_id=388215196&inventory_id=HXZM91710&date_from=
+            // https://api.mercadolibre.com/marketplace/stock/fulfillment/operations/search?seller_id=388215196&inventory_id=HXZM91710&date_from=2021-10-07&date_to=2021-12-06
 
         } catch (error) { console.log(`Error return operation`, error) }
     })(a, b, c, d, e, f, g, h);
