@@ -9,7 +9,7 @@ module.exports.getOperationsAfterGlobal = (a) => {
     (async function (data) {
         try {
 
-            console.log(data)
+            console.log("datadatadatadatadatadatadata",data)
 
             await pool_pg.query('truncate analisis_operaciones_temp;');
             await pool_pg.query('truncate analisis_previo_operaciones_temp;');
