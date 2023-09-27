@@ -28,7 +28,8 @@ const callOperations = (a) => {
             const timeDelay = 250; // 250
 
             (function recorreCiclos(n) {
-                returnOperation(urlBase, fecha1, fecha2, aToken, usrId, mlcItem, (n + 1), inventory_id);
+                console.log(fecha1, fecha2)
+                // returnOperation(urlBase, fecha1, fecha2, aToken, usrId, mlcItem, (n + 1), inventory_id);
                 fecha2 = fecha1;
                 fecha1 = returnDate(fecha2, -60);
                 n++;
