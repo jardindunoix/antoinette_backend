@@ -11,8 +11,6 @@ const uploadInvoiceDoc = async (req, res) => {
     console.log(el)
   });
 
-
-
   res.status(200).json({ response: `OK` });
   // try {
   //   if (req.files) {
