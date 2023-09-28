@@ -19,9 +19,9 @@ const uploadInvoiceDoc = async (req, res) => {
       // console.log(index,)
       Object.entries(elem).forEach((ele) => {
         ele.forEach((el) => {
-          // if (el.toLowerCase().includes('cl')) {
-          console.log(typeof el)
-          // }
+          if (String(el).toLowerCase().includes('cl')) {
+            console.log(String(el))
+          }
         })
       })
 
