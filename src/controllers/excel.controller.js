@@ -8,7 +8,7 @@ const uploadInvoiceDoc = async (req, res) => {
   // console.table(JSON.parse(JSON.stringify(req.body)))
 
   request.forEach((el, index) => {
-    console.log(index, el)
+    console.log(index, Object.entries(el).length)
   });
 
   res.status(200).json({ response: `OK` });
