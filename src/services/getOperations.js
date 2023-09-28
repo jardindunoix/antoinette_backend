@@ -25,7 +25,7 @@ const callOperations = (a) => {
             let fecha2 = getFechaHoy();
             let fecha1 = returnDate(fecha2, -60);
             const ciclesBack = 24; // 12
-            const timeDelay = 500; // 250
+            const timeDelay = 1000; // 250
             (function recorreCiclos(n) {
                 returnOperation(urlBase, fecha1, fecha2, aToken, usrId, mlcItem, (n + 1), inventory_id);
                 fecha2 = fecha1;
@@ -56,7 +56,7 @@ function returnOperation(a, b, c, d, e, f, g, h) {
             if (sugarboo) {
                 /* analisis_previo_operaciones */
 
-                console.log('sugarboo', Object.entries(sugarboo))
+                console.log('sugarboo', Object.entries(sugarboo)[0])
 
                 await insertTransitorio(`${sugarboo['paging']['total']}`, fecha1, fecha2, usrId, mlcItem, inventory_id);
                 if (sugarboo['paging']['total'] > 0) {
@@ -74,12 +74,13 @@ function returnOperation(a, b, c, d, e, f, g, h) {
 
 async function insertData(el, fecha1, fecha2, usrId, mlcItem, inventory_id) {
     try {
-        el['results'].forEach(async elem => {
-            try {
-                const fecha = elem['date_created'].split('Z')[0].replace('T', '-').replace(':', '-').replace(':', '-').split('-');
-                const fecha_ = returnFecha(fecha);
-                const fechaOrden = returnFechaOrden(fecha);
-                const columnsVar = `
+        if (el) {
+            el['results'].forEach(async elem => {
+                try {
+                    const fecha = elem['date_created'].split('Z')[0].replace('T', '-').replace(':', '-').replace(':', '-').split('-');
+                    const fecha_ = returnFecha(fecha);
+                    const fechaOrden = returnFechaOrden(fecha);
+                    const columnsVar = `
              aaa_user_id,
              item_mkpl_id, 
              fecha1, 
@@ -107,58 +108,58 @@ async function insertData(el, fecha1, fecha2, usrId, mlcItem, inventory_id) {
              sort,
              available_sorts,
              sku`
-                    ;
+                        ;
 
-                const exterRef = ['sin ext ref', 'sin ext ref'];
+                    const exterRef = ['sin ext ref', 'sin ext ref'];
 
-                if (elem['external_references'].length === 1) {
-                    exterRef[0] = elem['external_references'][0]['type'];
-                    exterRef[1] = elem['external_references'][0]['value'];
-                } else if (elem['external_references'].length > 1) {
-                    exterRef[0] = 'mayor a 1 LEN??';
-                    exterRef[1] = 'mayor a 1 LEN??';
-                }
+                    if (elem['external_references'].length === 1) {
+                        exterRef[0] = elem['external_references'][0]['type'];
+                        exterRef[1] = elem['external_references'][0]['value'];
+                    } else if (elem['external_references'].length > 1) {
+                        exterRef[0] = 'mayor a 1 LEN??';
+                        exterRef[1] = 'mayor a 1 LEN??';
+                    }
 
-                let detailNotAvailableDetail = 'sin detNotAvail';
-                let resultNotAvailableDetail = 'sin resNotAvail';
+                    let detailNotAvailableDetail = 'sin detNotAvail';
+                    let resultNotAvailableDetail = 'sin resNotAvail';
 
-                if (elem['detail']['not_available_detail'].length > 0) {
-                    detailNotAvailableDetail = '';
-                    elem['detail']['not_available_detail'].forEach((el) => detailNotAvailableDetail += Object.entries(el).join('::'));
-                }
+                    if (elem['detail']['not_available_detail'].length > 0) {
+                        detailNotAvailableDetail = '';
+                        elem['detail']['not_available_detail'].forEach((el) => detailNotAvailableDetail += Object.entries(el).join('::'));
+                    }
 
-                if (elem['result']['not_available_detail'].length > 0) {
-                    resultNotAvailableDetail = '';
-                    elem['result']['not_available_detail'].forEach((el) => resultNotAvailableDetail += Object.entries(el).join('::'));
-                }
+                    if (elem['result']['not_available_detail'].length > 0) {
+                        resultNotAvailableDetail = '';
+                        elem['result']['not_available_detail'].forEach((el) => resultNotAvailableDetail += Object.entries(el).join('::'));
+                    }
 
-                let filtersData = '';
-                let availableFiltersData = '';
-                let sortData = '';
-                let availableSorts = '';
+                    let filtersData = '';
+                    let availableFiltersData = '';
+                    let sortData = '';
+                    let availableSorts = '';
 
-                el['filters'].forEach(el => {
-                    if (el['id']) filtersData += `${el['id']} - `;
-                    if (el['name']) filtersData += `${el['name']} - `;
-                });
+                    el['filters'].forEach(el => {
+                        if (el['id']) filtersData += `${el['id']} - `;
+                        if (el['name']) filtersData += `${el['name']} - `;
+                    });
 
-                el['available_filters'].forEach(el => {
-                    if (el['id']) availableFiltersData += `${el['id']} - `;
-                    if (el['name']) availableFiltersData += `${el['name']} - `;
-                });
+                    el['available_filters'].forEach(el => {
+                        if (el['id']) availableFiltersData += `${el['id']} - `;
+                        if (el['name']) availableFiltersData += `${el['name']} - `;
+                    });
 
-                sortData = Object.entries(el['sort']).map(el => {
-                    if (el[0] === 'id') sortData += `${el[1]} - `;
-                    if (el[0] === 'name') sortData += `${el[1]} - `;
-                    return sortData;
-                });
+                    sortData = Object.entries(el['sort']).map(el => {
+                        if (el[0] === 'id') sortData += `${el[1]} - `;
+                        if (el[0] === 'name') sortData += `${el[1]} - `;
+                        return sortData;
+                    });
 
-                el['available_filters'].forEach(el => {
-                    if (el['id']) availableFiltersData += `${el['id']} - `;
-                    if (el['name']) availableFiltersData += `${el['name']} - `;
-                });
+                    el['available_filters'].forEach(el => {
+                        if (el['id']) availableFiltersData += `${el['id']} - `;
+                        if (el['name']) availableFiltersData += `${el['name']} - `;
+                    });
 
-                await pool_pg.query(`insert into analisis_operaciones_temp (${columnsVar}) 
+                    await pool_pg.query(`insert into analisis_operaciones_temp (${columnsVar}) 
                      values
                (
                 '${usrId}', 
@@ -191,9 +192,13 @@ async function insertData(el, fecha1, fecha2, usrId, mlcItem, inventory_id) {
                 `);
 
 
-            } catch (error) { console.log(`shout loud`, error) }
-        })
-    } catch (error) { console.log(`Error en e catch de la no se que`, error) }
+                } catch (error) { console.log(`shout loud`, error) }
+            })
+        } else { 
+
+        }
+    // } catch (error) { console.log(`Error en e catch de la no se que`, error) }
+    } catch (error) { console.log(`Error en la insercion - ddbb`) }
 }
 
 async function insertTransitorio(a, b, c, d, e, f) {
