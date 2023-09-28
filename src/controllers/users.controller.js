@@ -339,41 +339,49 @@ const sellerInvoiceDetails = async (req, res) => {
 
 /* list of operations */
 const getOperaciones = async (req, res) => {
-  const {
-    usr_id,
-    sell_Id,
-    inventID,
-    inventID_variations,
-    refToken,
-    mkpl_id } = req.body;
-  const data = {
-    inventory_id: inventID,
-    inventory_id_variations: inventID_variations,
-    seller_id: sell_Id.split('-')[0].trim(),
-    refToken,
-    usrId: usr_id,
-    mlcItem: mkpl_id
-  };
-  await getOperationsAfterGlobal(data);
+  try {
+    const {
+      usr_id,
+      sell_Id,
+      inventID,
+      inventID_variations,
+      refToken,
+      mkpl_id } = req.body;
+    const data = {
+      inventory_id: inventID,
+      inventory_id_variations: inventID_variations,
+      seller_id: sell_Id.split('-')[0].trim(),
+      refToken,
+      usrId: usr_id,
+      mlcItem: mkpl_id
+    };
 
-  console.log("en espera")
+    console.time();
 
-  await setTimeout(async () => {
-    try {
-      const oper_ = await getOperationsItem(usr_id);
-      const oper = oper_ ? oper_['rows'] : [];
+    await getOperationsAfterGlobal(data);
 
-      console.log(oper)
+    console.log("en espera")
 
-      res.status(200).send(oper);
-    } catch (error) {
 
-      console.log(`ERORR SUOER??`, error);
+    console.timeEnd();
 
-      res.status(200).send('error');
-    }
-  }, 5000);
 
+    console.time();
+
+    const oper_ = await getOperationsItem(usr_id);
+    const oper = oper_ ? oper_['rows'] : [];
+
+    console.log(oper)
+
+    res.status(200).send(oper);
+
+    console.timeEnd();
+  } catch (error) {
+
+    console.log(`ERORR SUOER??`, error);
+
+    res.status(200).send('error');
+  }
 }
 
 /* list of operations */
