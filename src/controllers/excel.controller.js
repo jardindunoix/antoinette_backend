@@ -15,15 +15,21 @@ const uploadInvoiceDoc = async (req, res) => {
       // }
 
       // Object.entries(elem)[0][1].forEach((e, index) => {
-      // console.log(index, elem)
 
-      console.log('rodrigoberto')
+      console.log(index, Object.entries(elem)[1])
 
       // })
       // const title = {
       //   'Commercial Invoice  商业发票': 'Invoice NO.发票编号:',
       //   __EMPTY_1: 'CL2020007'
       // }
+
+      /*
+      {
+  'Commercial Invoice  商业发票': 'Company Name公司名称:',
+  __EMPTY_1: 'BL TRADING SPA'
+}
+      */
     }
 
     // if (Object.entries(el).length > 9 && index < 50) {
