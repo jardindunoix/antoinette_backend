@@ -16,7 +16,7 @@ const uploadInvoiceDoc = async (req, res) => {
 
       // Object.entries(elem)[0][1].forEach((e, index) => {
 
-      console.log(index, Object.entries(elem)[1])
+      console.log(index, Object.entries(elem)[0], Object.entries(elem)[1][1])
 
       // })
       // const title = {
