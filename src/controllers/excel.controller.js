@@ -10,6 +10,7 @@ const uploadInvoiceDoc = async (req, res) => {
   let invoiceNumber = '-'
   let invoiceDate = '-'
   let invoiceTerms = '-'
+  let invoiceRows = []
   request.forEach((elem, index) => {
     // INVOICE NUMBER, DATE, TERMS
     if (Object.entries(elem).length < 5 && index < 50) {
@@ -22,26 +23,22 @@ const uploadInvoiceDoc = async (req, res) => {
       })
     }
 
-
-
     // BODY OF EXCEL
-    // if (Object.entries(el).length > 9 && index < 50) {
-    //   const tabs = {
-    //     costumer_code: Object.entries(el)[0][1], // Invoice: 1338893,  
-    //     description: Object.entries(el)[1][1], // __EMPTY_1: 'watch',  
-    //     sku: Object.entries(el)[2][1], // __EMPTY_2: 'NNTQ79237',  
-    //     quantity: Object.entries(el)[3][1], // __EMPTY_3: 20, 
-    //     materials: Object.entries(el)[4][1], // __EMPTY_4: 'Metal + plastic',  
-    //     hs_code: Object.entries(el)[5][1], // __EMPTY_5: 9102120000,  
-    //     selling_value: Object.entries(el)[6][1], // __EMPTY_6: 82.348,   
-    //     unit_value: Object.entries(el)[7][1], // __EMPTY_7: 69.2,  
-    //     divi: Object.entries(el)[8][1], // __EMPTY_8: 'USD', 
-    //     total_value: Object.entries(el)[9][1], // __EMPTY_9: 1384,  
-    //     mlc: Object.entries(el)[10][1], // __EMPTY_10: 'MLC546055202'  
-    //   }
-    //   console.log(tabs)
-    // }
-
+    if (Object.entries(el).length > 9 && index < 50) {
+      invoiceRows.push({
+        costumer_code: Object.entries(el)[0][1], // Invoice: 1338893,  
+        description: Object.entries(el)[1][1], // __EMPTY_1: 'watch',  
+        sku: Object.entries(el)[2][1], // __EMPTY_2: 'NNTQ79237',  
+        quantity: Object.entries(el)[3][1], // __EMPTY_3: 20, 
+        materials: Object.entries(el)[4][1], // __EMPTY_4: 'Metal + plastic',  
+        hs_code: Object.entries(el)[5][1], // __EMPTY_5: 9102120000,  
+        selling_value: Object.entries(el)[6][1], // __EMPTY_6: 82.348,   
+        unit_value: Object.entries(el)[7][1], // __EMPTY_7: 69.2,  
+        divi: Object.entries(el)[8][1], // __EMPTY_8: 'USD', 
+        total_value: Object.entries(el)[9][1], // __EMPTY_9: 1384,  
+        mlc: Object.entries(el)[10][1], // __EMPTY_10: 'MLC546055202'  
+      })
+    }
   });
 
   console.log(
@@ -49,6 +46,8 @@ const uploadInvoiceDoc = async (req, res) => {
     invoiceDate,
     invoiceTerms,
   )
+
+  console.log(invoiceRows.length)
 
   res.status(200).json({ response: `OK` });
   // try {
