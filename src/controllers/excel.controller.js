@@ -8,7 +8,9 @@ const uploadInvoiceDoc = async (req, res) => {
   // console.table(JSON.parse(JSON.stringify(req.body)))
 
   request.forEach((el, index) => {
-    console.log(index, Object.entries(el).length)
+    if (Object.entries(el).length > 5) {
+      console.log(index, Object.entries(el).length)
+    }
   });
 
   res.status(200).json({ response: `OK` });
