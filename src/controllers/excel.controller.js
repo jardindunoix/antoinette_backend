@@ -10,7 +10,7 @@ const uploadInvoiceDoc = async (req, res) => {
   request.forEach((el, index) => {
 
     if (Object.entries(el).length < 5 && index < 50) {
-      console.table(el)
+      console.log(Object.entries(el))
       // const title = {
       //   'Commercial Invoice  商业发票': 'Invoice NO.发票编号:',
       //   __EMPTY_1: 'CL2020007'
