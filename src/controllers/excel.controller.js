@@ -8,31 +8,31 @@ const uploadInvoiceDoc = async (req, res) => {
   // console.table(JSON.parse(JSON.stringify(req.body)))
 
   request.forEach((elem, index) => {
-
-    // INVOICE NUMBER
-    // if (Object.entries(elem).length < 5 && index < 50) {
-    //   Object.entries(elem).forEach((ele) => {
-    //     ele.forEach((el) => {
-    //       if (String(el).toLowerCase().includes('cl')) {
-    //         console.log(String(el))
-    //       }
-    //     })
-    //   })
-    // }
-
-    // INVOICE DATE
+    let invoiceNumber = ''
+    let invoiceDate = ''
+    let invoiceTerms = ''
+    // INVOICE NUMBER, DATE, TERMS
     if (Object.entries(elem).length < 5 && index < 50) {
       Object.entries(elem).forEach((ele) => {
         ele.forEach((el) => {
+          if (String(el).toLowerCase().includes('cl')) {
+            invoiceNumber = String(el)
+          }
           if (String(el).toLowerCase().includes('date')) {
-            console.log(Object.entries(elem)[1][1])
+            invoiceDate = Object.entries(elem)[1][1]
           }
           if (String(el).toLowerCase().includes('terms')) {
-            console.log(Object.entries(elem)[1][1])
+            invoiceTerms = Object.entries(elem)[1][1]
           }
         })
       })
     }
+
+    console.log(
+      invoiceNumber,
+      invoiceDate,
+      invoiceTerms,
+    )
 
     // BODY OF EXCEL
     // if (Object.entries(el).length > 9 && index < 50) {
