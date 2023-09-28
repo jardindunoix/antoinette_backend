@@ -8,8 +8,8 @@ const uploadInvoiceDoc = async (req, res) => {
   // console.table(JSON.parse(JSON.stringify(req.body)))
 
   request.forEach((el, index) => {
-    if (Object.entries(el).length > 5) {
-      console.log(index, Object.entries(el).length)
+    if (Object.entries(el).length > 5 && (index > 20 && index < 50)) {
+      console.log(el)
     }
   });
 
