@@ -40,9 +40,6 @@ const callOperations = (a) => {
 function returnOperation(a, b, c, d, e, f, g, h) {
     (async function (urlBase, fecha1, fecha2, accTok, usrId, mlcItem, n, inventory_id) {
         try {
-
-            console.log(accTok,)
-
             const sugarboo = await fetch.get(`${urlBase}${fecha1}&date_to=${fecha2}`, {
                 headers: { "Content-Type": "application/json", Authorization: `Bearer ${accTok}` }
             }).then(async respo => {
@@ -55,6 +52,9 @@ function returnOperation(a, b, c, d, e, f, g, h) {
                     console.log(`err - insertado como dato`, err.response.statusText);
                 } else { console.log(`errreeredfdfdfdfd`, err.data); }
             });
+
+            console.log(accTok)
+            console.log(sugarboo)
 
             if (sugarboo) {
                 /* analisis_previo_operaciones */
