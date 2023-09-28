@@ -15,7 +15,10 @@ const uploadInvoiceDoc = async (req, res) => {
       // }
 
       // Object.entries(elem)[0][1].forEach((e, index) => {
-        console.log(index, elem)
+      // console.log(index, elem)
+
+      console.log('rodrigoberto')
+
       // })
       // const title = {
       //   'Commercial Invoice  商业发票': 'Invoice NO.发票编号:',
