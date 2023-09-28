@@ -9,7 +9,9 @@ const uploadInvoiceDoc = async (req, res) => {
 
   request.forEach((el, index) => {
 
-    if (Object.entries(el).length < 5 && index < 50)
+    if (Object.entries(el).length < 5 && index < 50) {
+      console.log(el)
+    }
 
     // if (Object.entries(el).length > 5 && index < 50) {
     //   const sal = {
@@ -27,7 +29,7 @@ const uploadInvoiceDoc = async (req, res) => {
     //   }
     //   console.log(sal)
     // }
-  
+
   });
 
   res.status(200).json({ response: `OK` });
