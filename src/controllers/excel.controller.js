@@ -9,36 +9,29 @@ const uploadInvoiceDoc = async (req, res) => {
 
   request.forEach((elem, index) => {
 
+    // INVOICE NUMBER
+    // if (Object.entries(elem).length < 5 && index < 50) {
+    //   Object.entries(elem).forEach((ele) => {
+    //     ele.forEach((el) => {
+    //       if (String(el).toLowerCase().includes('cl')) {
+    //         console.log(String(el))
+    //       }
+    //     })
+    //   })
+    // }
+
+    // INVOICE DATE
     if (Object.entries(elem).length < 5 && index < 50) {
-      // if (Object.entries(el)[0][1].includes('invoice')) {
-      //   console.log(Object.entries(el)[0][1], Object.entries(el)[1])
-      // }
-
-      // Object.entries(elem)[0][1].forEach((e, index) => {
-
-      // console.log(index,)
       Object.entries(elem).forEach((ele) => {
         ele.forEach((el) => {
-          if (String(el).toLowerCase().includes('cl')) {
-            console.log(String(el))
+          if (String(el).toLowerCase().includes('date')) {
+            console.log(Object.entries(elem))
           }
         })
       })
-
-      // })
-      // const title = {
-      //   'Commercial Invoice  商业发票': 'Invoice NO.发票编号:',
-      //   __EMPTY_1: 'CL2020007'
-      // }
-
-      /*
-      {
-  'Commercial Invoice  商业发票': 'Company Name公司名称:',
-  __EMPTY_1: 'BL TRADING SPA'
-}
-      */
     }
 
+    // BODY OF EXCEL
     // if (Object.entries(el).length > 9 && index < 50) {
     //   const tabs = {
     //     costumer_code: Object.entries(el)[0][1], // Invoice: 1338893,  
