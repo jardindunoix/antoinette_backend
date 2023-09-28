@@ -53,9 +53,6 @@ function returnOperation(a, b, c, d, e, f, g, h) {
                 } else { console.log(`errreeredfdfdfdfd`, err.data); }
             });
 
-            console.log(accTok)
-            console.log(sugarboo)
-
             if (sugarboo) {
                 /* analisis_previo_operaciones */
                 await insertTransitorio(`${sugarboo['paging']['total']}`, fecha1, fecha2, usrId, mlcItem, inventory_id);
@@ -67,18 +64,6 @@ function returnOperation(a, b, c, d, e, f, g, h) {
                 /* analisis_previo_operaciones */
                 await insertTransitorio(`valor llega null`, fecha1, fecha2, usrId, mlcItem, inventory_id);
             }
-
-            /* 
-            {
-    "message": "Too many requests",
-    "error": "too_many_requests",
-    "status": 429,
-    "cause": []
-}
-            */
-
-            // https://api.mercadolibre.com/marketplace/stock/fulfillment/operations/search?seller_id=388215196&inventory_id=HXZM91710&date_from=
-            // https://api.mercadolibre.com/marketplace/stock/fulfillment/operations/search?seller_id=388215196&inventory_id=HXZM91710&date_from=2021-10-07&date_to=2021-12-06
 
         } catch (error) { console.log(`Error return operation`, error) }
     })(a, b, c, d, e, f, g, h);

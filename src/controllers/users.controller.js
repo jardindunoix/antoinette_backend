@@ -339,9 +339,6 @@ const sellerInvoiceDetails = async (req, res) => {
 
 /* list of operations */
 const getOperaciones = async (req, res) => {
-
-  // hola desde local OTRA VEZ
-
   const {
     usr_id,
     sell_Id,
@@ -349,9 +346,6 @@ const getOperaciones = async (req, res) => {
     inventID_variations,
     refToken,
     mkpl_id } = req.body;
-
-  console.log(sell_Id.split('-')[0].trim())
-  
   const data = {
     inventory_id: inventID,
     inventory_id_variations: inventID_variations,
@@ -360,11 +354,26 @@ const getOperaciones = async (req, res) => {
     usrId: usr_id,
     mlcItem: mkpl_id
   };
-
-  // console.log(data)
-
   await getOperationsAfterGlobal(data);
-  res.status(200).send('ok');
+
+  console.log("en espera")
+
+  await setTimeout(async () => {
+    try {
+      const oper_ = await getOperationsItem(usr_id);
+      const oper = oper_ ? oper_['rows'] : [];
+
+      console.log(oper)
+
+      res.status(200).send(oper);
+    } catch (error) {
+
+      console.log(`ERORR SUOER??`, error);
+
+      res.status(200).send('error');
+    }
+  }, 5000);
+
 }
 
 /* list of operations */
