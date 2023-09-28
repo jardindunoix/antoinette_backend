@@ -25,10 +25,10 @@ const uploadInvoiceDoc = async (req, res) => {
       Object.entries(elem).forEach((ele) => {
         ele.forEach((el) => {
           if (String(el).toLowerCase().includes('date')) {
-            console.log(Object.entries(elem))
+            console.log(Object.entries(elem)[1][1])
           }
           if (String(el).toLowerCase().includes('terms')) {
-            console.log(Object.entries(elem))
+            console.log(Object.entries(elem)[1][1])
           }
         })
       })
