@@ -4,7 +4,14 @@ const { leerExcel } = require('../services/excelService/excelFunc');
 const uploadInvoiceDoc = async (req, res) => {
 
   // console.log(Object.entries(req.body)[0])
-  console.table(JSON.parse(JSON.stringify(req.body)))
+  const request = JSON.parse(JSON.stringify(req.body))
+  // console.table(JSON.parse(JSON.stringify(req.body)))
+
+  request.forEach(el => {
+    console.log(el)
+  });
+
+
 
   res.status(200).json({ response: `OK` });
   // try {
