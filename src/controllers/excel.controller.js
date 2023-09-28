@@ -8,8 +8,21 @@ const uploadInvoiceDoc = async (req, res) => {
   // console.table(JSON.parse(JSON.stringify(req.body)))
 
   request.forEach((el, index) => {
-    if (Object.entries(el).length > 5 && (index > 20 && index < 50)) {
-      console.log(el)
+    if (Object.entries(el).length > 5 && index < 50) {
+      const sal = {
+        costumer_code: Object.entries(el)[0], // Invoice: 1338893,  
+        description: Object.entries(el)[1], // __EMPTY_1: 'watch',  
+        sku: Object.entries(el)[2], // __EMPTY_2: 'NNTQ79237',  
+        quantity: Object.entries(el)[3], // __EMPTY_3: 20, 
+        materials: Object.entries(el)[4], // __EMPTY_4: 'Metal + plastic',  
+        hs_code: Object.entries(el)[5], // __EMPTY_5: 9102120000,  
+        selling_value: Object.entries(el)[6], // __EMPTY_6: 82.348,   
+        unit_value: Object.entries(el)[7], // __EMPTY_7: 69.2,  
+        divi: Object.entries(el)[8], // __EMPTY_8: 'USD', 
+        total_value: Object.entries(el)[9], // __EMPTY_9: 1384,  
+        mlc: Object.entries(el)[10], // __EMPTY_10: 'MLC546055202'  
+      }
+      console.log(sal)
     }
   });
 
