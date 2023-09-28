@@ -10,11 +10,15 @@ const uploadInvoiceDoc = async (req, res) => {
   request.forEach((el, index) => {
 
     if (Object.entries(el).length < 5 && index < 50) {
-      console.log(el)
+      console.table(el)
+      // const title = {
+      //   'Commercial Invoice  商业发票': 'Invoice NO.发票编号:',
+      //   __EMPTY_1: 'CL2020007'
+      // }
     }
 
-    // if (Object.entries(el).length > 5 && index < 50) {
-    //   const sal = {
+    // if (Object.entries(el).length > 9 && index < 50) {
+    //   const tabs = {
     //     costumer_code: Object.entries(el)[0][1], // Invoice: 1338893,  
     //     description: Object.entries(el)[1][1], // __EMPTY_1: 'watch',  
     //     sku: Object.entries(el)[2][1], // __EMPTY_2: 'NNTQ79237',  
@@ -27,7 +31,7 @@ const uploadInvoiceDoc = async (req, res) => {
     //     total_value: Object.entries(el)[9][1], // __EMPTY_9: 1384,  
     //     mlc: Object.entries(el)[10][1], // __EMPTY_10: 'MLC546055202'  
     //   }
-    //   console.log(sal)
+    //   console.log(tabs)
     // }
 
   });
