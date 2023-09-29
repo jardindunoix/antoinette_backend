@@ -3,18 +3,18 @@ const { leerExcel } = require('../services/excelService/excelFunc');
 /* load excell in */
 const uploadInvoiceDoc = async (req, res) => {
   const request = JSON.parse(JSON.stringify(req.body))
-  let invoiceNumber = '-'
-  let invoiceDate = '-'
-  let invoiceTerms = '-'
+  let invoice_number = '-'
+  let invoice_date = '-'
+  let invoice_terms = '-'
   let invoiceRows = []
-  request.forEach((elem, index) => {
+  request.forEach((elem) => {
     // INVOICE NUMBER, DATE, TERMS
     if (Object.entries(elem).length < 5) {
       Object.entries(elem).forEach((ele) => {
         ele.forEach((el) => {
-          if (String(el).toLowerCase().includes('cl')) { invoiceNumber = String(el) }
-          if (String(el).toLowerCase().includes('date')) { invoiceDate = String(Object.entries(elem)[1][1]) }
-          if (String(el).toLowerCase().includes('terms')) { invoiceTerms = String(Object.entries(elem)[1][1]) }
+          if (String(el).toLowerCase().includes('cl')) { invoice_number = String(el) }
+          if (String(el).toLowerCase().includes('date')) { invoice_date = String(Object.entries(elem)[1][1]) }
+          if (String(el).toLowerCase().includes('terms')) { invoice_terms = String(Object.entries(elem)[1][1]) }
         })
       })
     }
@@ -22,9 +22,9 @@ const uploadInvoiceDoc = async (req, res) => {
     // BODY OF EXCEL
     if (Object.entries(elem).length > 9) {
       invoiceRows.push({
-        invoiceNumber,
-        invoiceDate,
-        invoiceTerms,
+        invoice_number,
+        invoice_date,
+        invoice_terms,
         costumer_code: Object.entries(elem)[0] ? Object.entries(elem)[0].length > 1 ? String(Object.entries(elem)[0][1]) : '-' : '-', // Invoice: 1338893,  
         description: Object.entries(elem)[1] ? Object.entries(elem)[1].length > 1 ? String(Object.entries(elem)[1][1]) : '-' : '-', // __EMPTY_1: 'watch',  
         sku: Object.entries(elem)[2] ? Object.entries(elem)[2].length > 1 ? String(Object.entries(elem)[2][1]) : '-' : '-', // __EMPTY_2: 'NNTQ79237',  
