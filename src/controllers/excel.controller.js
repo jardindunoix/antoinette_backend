@@ -9,7 +9,7 @@ const uploadInvoiceDoc = async (req, res) => {
   let invoiceRows = []
   request.forEach((elem, index) => {
     // INVOICE NUMBER, DATE, TERMS
-    if (Object.entries(elem).length < 5 && index < 50) {
+    if (Object.entries(elem).length < 5) {
       Object.entries(elem).forEach((ele) => {
         ele.forEach((el) => {
           if (String(el).toLowerCase().includes('cl')) { invoiceNumber = String(el) }
@@ -42,7 +42,7 @@ const uploadInvoiceDoc = async (req, res) => {
 
   console.log(invoiceNumber, invoiceDate, invoiceTerms,)
   console.log(invoiceRows.length)
-  console.table(invoiceRows)
+  console.table(invoiceRows.splice(0, 1))
 
   if (invoiceRows.length > 0) {
     res.status(200).json({ response: `OK` });
