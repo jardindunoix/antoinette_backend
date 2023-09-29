@@ -24,7 +24,7 @@ const uploadInvoiceDoc = async (req, res) => {
     }
 
     // BODY OF EXCEL
-    if (Object.entries(elem).length > 9 && index < 50) {
+    if (Object.entries(elem).length > 9) {
       invoiceRows.push({
         costumer_code: Object.entries(elem)[0][1], // Invoice: 1338893,  
         description: Object.entries(elem)[1][1], // __EMPTY_1: 'watch',  
