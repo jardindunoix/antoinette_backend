@@ -50,9 +50,9 @@ async function insertExcelData(requestList) {
   const queryInsert = `INSERT INTO invoice (invoice_number, invoice_date, invoice_terms, costumer_code, description, sku, quantity, materials, hs_code, selling_value, unit_value, divisa, total_value, mlc) VALUES
   ${values};`;
 
-  console.log(queryInsert)
+  // console.log(queryInsert)
 
-  // await pool_pg.query(queryInsert);
+  await pool_pg.query(queryInsert);
 
   // await pool_pg.query(`delete from invoice_data where invoice_num = '${invoiceNo[0]['value']}';`);
 }
