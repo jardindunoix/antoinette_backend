@@ -20,7 +20,7 @@ async function insertExcelData(requestList) {
     // BODY OF EXCEL
     if (Object.entries(elem).length > 9 && index > 40) {
 
-      Object.entries(elem)
+      console.log(Object.entries(elem))
 
       // invoiceRows.push({
       //   invoice_number,
