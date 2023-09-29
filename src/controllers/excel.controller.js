@@ -41,15 +41,12 @@ const uploadInvoiceDoc = async (req, res) => {
     }
   });
 
-  console.log(
-    invoiceNumber,
-    invoiceDate,
-    invoiceTerms,
-  )
-
+  console.log(invoiceNumber, invoiceDate, invoiceTerms,)
   console.log(invoiceRows.length)
+  console.table(invoiceRows)
 
   res.status(200).json({ response: `OK` });
+  
   // try {
   //   if (req.files) {
   //     if (req.files.doc.name.includes('.xlsx')) {
@@ -62,6 +59,7 @@ const uploadInvoiceDoc = async (req, res) => {
   //   console.log(`error uploading`, error);
   //   res.status(200).send(`ERROR UPLOADING`);
   // }
+  
 }
 
 module.exports = {
