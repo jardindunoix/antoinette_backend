@@ -47,24 +47,8 @@ async function insertExcelData(requestList) {
     values += index < listLast.length - 1 ? coma + "\n" : ' \n'
   })
 
-  const queryInsert = `INSERT INTO invoice (
-    invoice_number,
-    invoice_date,
-    invoice_terms,
-    costumer_code,
-    description,
-    sku,
-    quantity,
-    materials,
-    hs_code,
-    selling_value,
-    unit_value,
-    divisa,
-    total_value,
-    mlc
-  ) VALUES
-  ${values}
-  ;`;
+  const queryInsert = `INSERT INTO invoice (invoice_number, invoice_date, invoice_terms, costumer_code, description, sku, quantity, materials, hs_code, selling_value, unit_value, divisa, total_value, mlc) VALUES
+  ${values};`;
 
   console.log(queryInsert)
 
