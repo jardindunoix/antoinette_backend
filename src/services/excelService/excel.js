@@ -42,24 +42,8 @@ async function insertExcelData(requestList) {
   let values = ''
   let coma = ', '
   listLast.forEach((el, index) => {
-    values += `(
-      ${el.invoice_number},
-      ${el.invoice_date},
-      ${el.invoice_terms},
-      ${el.costumer_code},
-      ${el.description},
-      ${el.sku},
-      ${el.quantity},
-      ${el.materials},
-      ${el.hs_code},
-      ${el.selling_value},
-      ${el.unit_value},
-      ${el.divisa},
-      ${el.total_value},
-      ${el.mlc}
-      )
-      `
-    values += index < listLast.length - 1 ? coma : ' '
+    values += `(${el.invoice_number}, ${el.invoice_date}, ${el.invoice_terms}, ${el.costumer_code}, ${el.description}, ${el.sku}, ${el.quantity}, ${el.materials}, ${el.hs_code}, ${el.selling_value}, ${el.unit_value}, ${el.divisa}, ${el.total_value},${el.mlc})`
+    values += index < listLast.length - 1 ? coma + "\n" : ' \n'
   })
 
   const queryInsert = `INSERT INTO invoice (
