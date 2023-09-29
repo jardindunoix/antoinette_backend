@@ -40,7 +40,7 @@ const uploadInvoiceDoc = async (req, res) => {
     }
   });
 
-  console.log(invoiceNumber, invoiceDate, invoiceTerms,)
+  console.log(invoice_number, invoice_date, invoice_terms,)
   console.log(invoiceRows.length)
   console.table(invoiceRows.splice(1, invoiceRows.length - 1))
 
