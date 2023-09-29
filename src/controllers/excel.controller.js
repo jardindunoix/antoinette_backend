@@ -42,7 +42,7 @@ const uploadInvoiceDoc = async (req, res) => {
 
   console.log(invoiceNumber, invoiceDate, invoiceTerms,)
   console.log(invoiceRows.length)
-  console.table(invoiceRows.splice(0, 1))
+  console.table(invoiceRows.splice(1, invoiceRows.length - 1))
 
   if (invoiceRows.length > 0) {
     res.status(200).json({ response: `OK` });
