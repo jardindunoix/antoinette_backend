@@ -2,11 +2,7 @@ const { leerExcel } = require('../services/excelService/excelFunc');
 
 /* load excell in */
 const uploadInvoiceDoc = async (req, res) => {
-
-  // console.log(Object.entries(req.body)[0])
   const request = JSON.parse(JSON.stringify(req.body))
-  // console.table(JSON.parse(JSON.stringify(req.body)))
-
   let invoiceNumber = '-'
   let invoiceDate = '-'
   let invoiceTerms = '-'
@@ -26,6 +22,9 @@ const uploadInvoiceDoc = async (req, res) => {
     // BODY OF EXCEL
     if (Object.entries(elem).length > 9) {
       invoiceRows.push({
+        invoiceNumber,
+        invoiceDate,
+        invoiceTerms,
         costumer_code: Object.entries(elem)[0] ? Object.entries(elem)[0].length > 1 ? String(Object.entries(elem)[0][1]) : '-' : '-', // Invoice: 1338893,  
         description: Object.entries(elem)[1] ? Object.entries(elem)[1].length > 1 ? String(Object.entries(elem)[1][1]) : '-' : '-', // __EMPTY_1: 'watch',  
         sku: Object.entries(elem)[2] ? Object.entries(elem)[2].length > 1 ? String(Object.entries(elem)[2][1]) : '-' : '-', // __EMPTY_2: 'NNTQ79237',  
@@ -45,21 +44,28 @@ const uploadInvoiceDoc = async (req, res) => {
   console.log(invoiceRows.length)
   console.table(invoiceRows)
 
-  res.status(200).json({ response: `OK` });
-  
-  // try {
-  //   if (req.files) {
-  //     if (req.files.doc.name.includes('.xlsx')) {
-  //       await req.files.doc.mv(`./uploads/doc.xslx`);
-  //       const responseExcel = await leerExcel(`./uploads/doc.xslx`);
-  //       res.status(200).send(responseExcel);
-  //     } else { res.status(200).send(`no_extension`); }
-  //   } else { res.status(200).send(`no_file`); }
-  // } catch (error) {
-  //   console.log(`error uploading`, error);
-  //   res.status(200).send(`ERROR UPLOADING`);
-  // }
-  
+  if (invoiceRows.length > 0) {
+    res.status(200).json({ response: `OK` });
+  } else {
+    res.status(200).json({ response: `list 0` });
+  }
+
+
+
+  /*
+    try {
+      if (req.files) {
+        if (req.files.doc.name.includes('.xlsx')) {
+          await req.files.doc.mv(`./uploads/doc.xslx`);
+          const responseExcel = await leerExcel(`./uploads/doc.xslx`);
+          res.status(200).send(responseExcel);
+        } else { res.status(200).send(`no_extension`); }
+      } else { res.status(200).send(`no_file`); }
+    } catch (error) {
+      console.log(`error uploading`, error);
+      res.status(200).send(`ERROR UPLOADING`);
+    }
+   */
 }
 
 module.exports = {
