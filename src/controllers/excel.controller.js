@@ -1,56 +1,11 @@
 const { leerExcel } = require('../services/excelService/excelFunc');
+const { insertExcelData } = require('../services/excelService/excel');
 
 /* load excell in */
 const uploadInvoiceDoc = async (req, res) => {
-  const request = JSON.parse(JSON.stringify(req.body))
-  let invoice_number = '-'
-  let invoice_date = '-'
-  let invoice_terms = '-'
-  let invoiceRows = []
-  request.forEach((elem) => {
-    // INVOICE NUMBER, DATE, TERMS
-    if (Object.entries(elem).length < 5) {
-      Object.entries(elem).forEach((ele) => {
-        ele.forEach((el) => {
-          if (String(el).toLowerCase().includes('cl')) { invoice_number = String(el) }
-          if (String(el).toLowerCase().includes('date')) { invoice_date = String(Object.entries(elem)[1][1]) }
-          if (String(el).toLowerCase().includes('terms')) { invoice_terms = String(Object.entries(elem)[1][1]) }
-        })
-      })
-    }
-
-    // BODY OF EXCEL
-    if (Object.entries(elem).length > 9) {
-      invoiceRows.push({
-        invoice_number,
-        invoice_date,
-        invoice_terms,
-        costumer_code: Object.entries(elem)[0] ? Object.entries(elem)[0].length > 1 ? String(Object.entries(elem)[0][1]) : '-' : '-', // Invoice: 1338893,  
-        description: Object.entries(elem)[1] ? Object.entries(elem)[1].length > 1 ? String(Object.entries(elem)[1][1]) : '-' : '-', // __EMPTY_1: 'watch',  
-        sku: Object.entries(elem)[2] ? Object.entries(elem)[2].length > 1 ? String(Object.entries(elem)[2][1]) : '-' : '-', // __EMPTY_2: 'NNTQ79237',  
-        quantity: Object.entries(elem)[3] ? Object.entries(elem)[3].length > 1 ? String(Object.entries(elem)[3][1]) : '-' : '-', // __EMPTY_3: 20, 
-        materials: Object.entries(elem)[4] ? Object.entries(elem)[4].length > 1 ? String(Object.entries(elem)[4][1]) : '-' : '-', // __EMPTY_4: 'Metal + plastic',  
-        hs_code: Object.entries(elem)[5] ? Object.entries(elem)[5].length > 1 ? String(Object.entries(elem)[5][1]) : '-' : '-', // __EMPTY_5: 9102120000,  
-        selling_value: Object.entries(elem)[6] ? Object.entries(elem)[6].length > 1 ? String(Object.entries(elem)[6][1]) : '-' : '-', // __EMPTY_6: 82.348,   
-        unit_value: Object.entries(elem)[7] ? Object.entries(elem)[7].length > 1 ? String(Object.entries(elem)[7][1]) : '-' : '-', // __EMPTY_7: 69.2,  
-        divi: Object.entries(elem)[8] ? Object.entries(elem)[8].length > 1 ? String(Object.entries(elem)[8][1]) : '-' : '-', // __EMPTY_8: 'USD', 
-        total_value: Object.entries(elem)[9] ? Object.entries(elem)[9].length > 1 ? String(Object.entries(elem)[9][1]) : '-' : '-', // __EMPTY_9: 1384,  
-        mlc: Object.entries(elem)[10] ? Object.entries(elem)[10].length > 1 ? String(Object.entries(elem)[10][1]) : '-' : '-', // __EMPTY_10: 'MLC546055202'  
-      })
-    }
-  });
-
-  console.log(invoice_number, invoice_date, invoice_terms,)
-  console.log(invoiceRows.length)
-  console.table(invoiceRows.splice(1, invoiceRows.length - 1))
-
-  if (invoiceRows.length > 0) {
-    res.status(200).json({ response: `OK` });
-  } else {
-    res.status(200).json({ response: `list 0` });
-  }
-
-
+  const requestList = JSON.parse(JSON.stringify(req.body))
+  const respInsert = await insertExcelData(requestList)
+  res.status(200).json({ response: `OK` });
 
   /*
     try {
