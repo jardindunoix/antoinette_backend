@@ -40,6 +40,7 @@ async function insertExcelData(requestList) {
 
   const listLast = invoiceRows.splice(1, invoiceRows.length - 1)
 
+  console.table(listLast.length)
   console.log(listLast.length)
 
   let values = ''
