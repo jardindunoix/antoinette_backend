@@ -42,15 +42,16 @@ async function insertExcelData(requestList) {
   let values = ''
   let coma = ', '
   listLast.forEach((el, index) => {
-    console.log(index + 1)
+    // console.log(index + 1)
     values += `(${el.invoice_number}, ${el.invoice_date}, ${el.invoice_terms}, ${el.costumer_code}, ${el.description}, ${el.sku}, ${el.quantity}, ${el.materials}, ${el.hs_code}, ${el.selling_value}, ${el.unit_value}, ${el.divisa}, ${el.total_value},${el.mlc})`
     values += index < listLast.length - 1 ? coma + "\n" : ' \n'
   })
 
+  
   const queryInsert = `INSERT INTO invoice (invoice_number, invoice_date, invoice_terms, costumer_code, description, sku, quantity, materials, hs_code, selling_value, unit_value, divisa, total_value, mlc) VALUES
   ${values};`;
-
-  // console.log(queryInsert)
+  
+  console.log(queryInsert)
 
   await pool_pg.query(queryInsert);
 
