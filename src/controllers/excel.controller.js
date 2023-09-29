@@ -26,17 +26,17 @@ const uploadInvoiceDoc = async (req, res) => {
     // BODY OF EXCEL
     if (Object.entries(elem).length > 9) {
       invoiceRows.push({
-        costumer_code: String(Object.entries(elem)[0]) ? String(Object.entries(elem)[0][1]) : '-', // Invoice: 1338893,  
-        description: String(Object.entries(elem)[1]) ? String(Object.entries(elem)[1][1]) : '-', // __EMPTY_1: 'watch',  
-        sku: String(Object.entries(elem)[2]) ? String(Object.entries(elem)[2][1]) : '-', // __EMPTY_2: 'NNTQ79237',  
-        quantity: String(Object.entries(elem)[3]) ? String(Object.entries(elem)[3][1]) : '-', // __EMPTY_3: 20, 
-        materials: String(Object.entries(elem)[4]) ? String(Object.entries(elem)[4][1]) : '-', // __EMPTY_4: 'Metal + plastic',  
-        hs_code: String(Object.entries(elem)[5]) ? String(Object.entries(elem)[5][1]) : '-', // __EMPTY_5: 9102120000,  
-        selling_value: String(Object.entries(elem)[6]) ? String(Object.entries(elem)[6][1]) : '-', // __EMPTY_6: 82.348,   
-        unit_value: String(Object.entries(elem)[7]) ? String(Object.entries(elem)[7][1]) : '-', // __EMPTY_7: 69.2,  
-        divi: String(Object.entries(elem)[8]) ? String(Object.entries(elem)[8][1]) : '-', // __EMPTY_8: 'USD', 
-        total_value: String(Object.entries(elem)[9]) ? String(Object.entries(elem)[9][1]) : '-', // __EMPTY_9: 1384,  
-        mlc: String(Object.entries(elem)[10]) ? String(Object.entries(elem)[10][1]) : '-', // __EMPTY_10: 'MLC546055202'  
+        costumer_code: Object.entries(elem)[0].length > 1 ? String(Object.entries(elem)[0][1]) : '-', // Invoice: 1338893,  
+        description: Object.entries(elem)[1].length > 1 ? String(Object.entries(elem)[1][1]) : '-', // __EMPTY_1: 'watch',  
+        sku: Object.entries(elem)[2].length > 1 ? String(Object.entries(elem)[2][1]) : '-', // __EMPTY_2: 'NNTQ79237',  
+        quantity: Object.entries(elem)[3].length > 1 ? String(Object.entries(elem)[3][1]) : '-', // __EMPTY_3: 20, 
+        materials: Object.entries(elem)[4].length > 1 ? String(Object.entries(elem)[4][1]) : '-', // __EMPTY_4: 'Metal + plastic',  
+        hs_code: Object.entries(elem)[5].length > 1 ? String(Object.entries(elem)[5][1]) : '-', // __EMPTY_5: 9102120000,  
+        selling_value: Object.entries(elem)[6].length > 1 ? String(Object.entries(elem)[6][1]) : '-', // __EMPTY_6: 82.348,   
+        unit_value: Object.entries(elem)[7].length > 1 ? String(Object.entries(elem)[7][1]) : '-', // __EMPTY_7: 69.2,  
+        divi: Object.entries(elem)[8].length > 1 ? String(Object.entries(elem)[8][1]) : '-', // __EMPTY_8: 'USD', 
+        total_value: Object.entries(elem)[9].length > 1 ? String(Object.entries(elem)[9][1]) : '-', // __EMPTY_9: 1384,  
+        mlc: Object.entries(elem)[10].length > 1 ? String(Object.entries(elem)[10][1]) : '-', // __EMPTY_10: 'MLC546055202'  
       })
     }
   });
