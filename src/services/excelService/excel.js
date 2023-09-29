@@ -39,8 +39,11 @@ async function insertExcelData(requestList) {
   });
 
   const listLast = invoiceRows.splice(1, invoiceRows.length - 1)
+
+  console.log(listLast.length)
+
   let values = ''
-  let coma = ', '
+  const coma = ', '
   listLast.forEach((el, index) => {
     // console.log(index + 1)
     values += `('${el.invoice_number}', '${el.invoice_date}', '${el.invoice_terms}', '${el.costumer_code}', '${el.description}', '${el.sku}', '${el.quantity}', '${el.materials}', '${el.hs_code}', '${el.selling_value}', '${el.unit_value}', '${el.divisa}', '${el.total_value}', '${el.mlc}')`
@@ -49,12 +52,8 @@ async function insertExcelData(requestList) {
 
   const queryInsert = `INSERT INTO invoice (invoice_number, invoice_date, invoice_terms, costumer_code, description, sku, quantity, materials, hs_code, selling_value, unit_value, divisa, total_value, mlc) VALUES
   ${values};`;
-  // console.log(queryInsert)
-
-  console.log('insertado')
 
   // await pool_pg.query(queryInsert);
-  // await pool_pg.query(`delete from invoice_data where invoice_num = '${invoiceNo[0]['value']}';`);
 }
 
 module.exports = {
