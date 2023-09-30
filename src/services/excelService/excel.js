@@ -4,12 +4,11 @@ async function insertExcelData(requestList) {
   try {
     let values = ''
     const coma = ', '
+    const inventoryColumn = requestList[0].invoice_number
 
-    console.table(requestList)
-    console.log(requestList.length)
+    console.log(inventoryColumn)
 
     requestList.forEach((el, index) => {
-      console.log(index + 1)
       values += `('${el.invoice_number}', '${el.invoice_date}', '${el.invoice_terms}', '${el.costumer_code}', '${el.description}', '${el.sku}', '${el.quantity}', '${el.materials}', '${el.hs_code}', '${el.selling_value}', '${el.unit_value}', '${el.divisa}', '${el.total_value}', '${el.mlc}')`
       values += index < requestList.length - 1 ? coma + "\n" : ''
     })
