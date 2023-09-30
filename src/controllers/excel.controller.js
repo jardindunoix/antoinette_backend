@@ -6,9 +6,9 @@ const uploadInvoiceDoc = async (req, res) => {
   const requestList = JSON.parse(JSON.stringify(req.body))
   const respInsert = await insertExcelData(requestList)
 
+  console.log(respInsert)
 
-
-  res.status(200).json({ response: `ok` });
+  res.status(200).json({ response: respInsert });
 
   /*
     try {
