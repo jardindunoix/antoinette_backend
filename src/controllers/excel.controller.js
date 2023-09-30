@@ -5,7 +5,10 @@ const { insertExcelData } = require('../services/excelService/excel');
 const uploadInvoiceDoc = async (req, res) => {
   const requestList = JSON.parse(JSON.stringify(req.body))
   const respInsert = await insertExcelData(requestList)
-  res.status(200).json({ response: `OK` });
+
+
+
+  res.status(200).json({ response: `ok` });
 
   /*
     try {
