@@ -33,6 +33,9 @@ const callOperations = (a) => {
                 fecha2 = fecha1;
                 fecha1 = returnDate(fecha2, -60);
                 // n++;
+
+                console.log(valueCount)
+
                 if (valueCount < ciclesBack) {
                     setTimeout(recorreCiclos, timeDelay, (valueCount + 1));
                 }
