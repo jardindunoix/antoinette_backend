@@ -357,7 +357,7 @@ const getOperaciones = async (req, res) => {
     };
 
     console.log()
-    console.log("seller id", seller_id,)
+    console.log("seller id", data)
 
     await getOperationsAfterGlobal(data);
 
