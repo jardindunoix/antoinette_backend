@@ -24,17 +24,15 @@ const callOperations = (a) => {
             const urlBase = sprintf(callOperaciones, seller_id, inventory_id);
             let fecha2 = getFechaHoy();
             let fecha1 = returnDate(fecha2, -60);
-            const ciclesBack = 18; // 12
-            const timeDelay = 12000; // 250
+            const ciclesBack = 12; // 12
+            const timeDelay = 15000; // 250
             (function recorreCiclos(n) {
                 returnOperation(urlBase, fecha1, fecha2, aToken, usrId, mlcItem, (n + 1), inventory_id);
                 fecha2 = fecha1;
                 fecha1 = returnDate(fecha2, -60);
-                n++;
+                // n++;
                 if (n < ciclesBack) {
-                    setTimeout(recorreCiclos, timeDelay, n);
-                } else {
-                    console.log('fin de los ciclos')
+                    setTimeout(recorreCiclos, timeDelay, (n + 1));
                 }
             }(0));
         } catch (error) { console.log(`error en retorna operaciones ++_+_+_+_+-=-=-=-`, error) }
@@ -52,8 +50,8 @@ function returnOperation(a, b, c, d, e, f, g, h) {
             }).catch(async err => {
                 if (err.response) {
                     /* analisis_operaciones */
-                    await insertData(err.response.statusText, fecha1, fecha2, usrId, mlcItem, inventory_id);
-                    console.log(`err - insertado como dato`, err.response.statusText);
+                    // await insertData(err.response.statusText, fecha1, fecha2, usrId, mlcItem, inventory_id);
+                    console.log(`err - dato en el catch:: `, err.response.statusText);
                 } else { console.log(`errreeredfdfdfdfd`, err.data); }
             });
 

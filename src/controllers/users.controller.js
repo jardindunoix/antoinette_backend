@@ -356,9 +356,6 @@ const getOperaciones = async (req, res) => {
       mlcItem: mkpl_id
     };
 
-    console.log()
-    console.log("seller id", data)
-
     await getOperationsAfterGlobal(data);
 
     const oper_ = await getOperationsItem(usr_id);
