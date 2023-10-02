@@ -350,14 +350,15 @@ const getOperaciones = async (req, res) => {
     const data = {
       inventory_id: inventID,
       inventory_id_variations: inventID_variations,
-      seller_id: sell_Id.split('-')[0].trim(),
+      seller_id: sell_Id.split('-')[1].trim(),
       refToken,
       usrId: usr_id,
       mlcItem: mkpl_id
     };
 
+    console.log()
+    console.log("seller id", seller_id,)
 
-    
     await getOperationsAfterGlobal(data);
 
     const oper_ = await getOperationsItem(usr_id);
