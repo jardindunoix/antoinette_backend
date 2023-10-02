@@ -30,7 +30,7 @@ const callOperations = (a) => {
             const ciclesBack = 12; // 12
             const timeDelay = 15500; // 250
             (function recorreCiclos() {
-                returnOperation(urlBase, fecha1, fecha2, aToken, usrId, mlcItem, (valueCount + 1), inventory_id);
+                returnOperation(urlBase, fecha1, fecha2, aToken, usrId, mlcItem, inventory_id);
                 fecha2 = fecha1;
                 fecha1 = returnDate(fecha2, -60);
                 // n++;
@@ -46,8 +46,8 @@ const callOperations = (a) => {
     })(a);
 }
 
-function returnOperation(a, b, c, d, e, f, g, h) {
-    (async function (urlBase, fecha1, fecha2, accTok, usrId, mlcItem, n, inventory_id) {
+function returnOperation(a, b, c, d, e, f, g,) {
+    (async function (urlBase, fecha1, fecha2, accTok, usrId, mlcItem, inventory_id) {
         try {
             const sugarboo = await fetch.get(`${urlBase}${fecha1}&date_to=${fecha2}`, {
                 headers: { "Content-Type": "application/json", Authorization: `Bearer ${accTok}` }
@@ -65,7 +65,7 @@ function returnOperation(a, b, c, d, e, f, g, h) {
             if (sugarboo) {
                 /* analisis_previo_operaciones */
 
-                console.log('sugarboo', Object.entries(sugarboo)[0])
+                console.log('sugarboo', sugarboo.paging.total, valueCount)
 
                 await insertTransitorio(`${sugarboo['paging']['total']}`, fecha1, fecha2, usrId, mlcItem, inventory_id);
                 if (sugarboo['paging']['total'] > 0) {
@@ -77,7 +77,7 @@ function returnOperation(a, b, c, d, e, f, g, h) {
                 await insertTransitorio(`valor llega null`, fecha1, fecha2, usrId, mlcItem, inventory_id);
             }
         } catch (error) { console.log(`Error return operation`, error) }
-    })(a, b, c, d, e, f, g, h);
+    })(a, b, c, d, e, f, g);
 }
 
 async function insertData(el, fecha1, fecha2, usrId, mlcItem, inventory_id) {
