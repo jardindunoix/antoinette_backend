@@ -29,7 +29,7 @@ const callOperations = (a) => {
             const ciclesBack = 12; // 12
             const timeDelay = 15000; // 250
             (function recorreCiclos() {
-                returnOperation(urlBase, fecha1, fecha2, aToken, usrId, mlcItem, (n + 1), inventory_id);
+                returnOperation(urlBase, fecha1, fecha2, aToken, usrId, mlcItem, (valueCount + 1), inventory_id);
                 fecha2 = fecha1;
                 fecha1 = returnDate(fecha2, -60);
                 // n++;
