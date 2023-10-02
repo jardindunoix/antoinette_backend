@@ -356,26 +356,13 @@ const getOperaciones = async (req, res) => {
       mlcItem: mkpl_id
     };
 
-    console.time();
-
     await getOperationsAfterGlobal(data);
-
-    console.log("en espera")
-
-
-    console.timeEnd();
-
-
-    console.time();
 
     const oper_ = await getOperationsItem(usr_id);
     const oper = oper_ ? oper_['rows'] : [];
 
-    console.log(oper)
-
     res.status(200).send(oper);
 
-    console.timeEnd();
   } catch (error) {
 
     console.log(`ERORR SUOER??`, error);

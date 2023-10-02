@@ -25,7 +25,7 @@ const callOperations = (a) => {
             let fecha2 = getFechaHoy();
             let fecha1 = returnDate(fecha2, -60);
             const ciclesBack = 24; // 12
-            const timeDelay = 1000; // 250
+            const timeDelay = 5000; // 250
             (function recorreCiclos(n) {
                 returnOperation(urlBase, fecha1, fecha2, aToken, usrId, mlcItem, (n + 1), inventory_id);
                 fecha2 = fecha1;
@@ -194,10 +194,10 @@ async function insertData(el, fecha1, fecha2, usrId, mlcItem, inventory_id) {
 
                 } catch (error) { console.log(`shout loud`, error) }
             })
-        } else { 
+        } else {
 
         }
-    // } catch (error) { console.log(`Error en e catch de la no se que`, error) }
+        // } catch (error) { console.log(`Error en e catch de la no se que`, error) }
     } catch (error) { console.log(`Error en la insercion - ddbb`) }
 }
 
