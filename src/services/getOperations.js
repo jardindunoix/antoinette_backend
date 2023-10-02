@@ -74,6 +74,9 @@ function returnOperation(a, b, c, d, e, f, g,) {
                 }
             } else {
                 /* analisis_previo_operaciones */
+                console.log('sugarboo null ?', sugarboo,)
+
+
                 await insertTransitorio(`valor llega null`, fecha1, fecha2, usrId, mlcItem, inventory_id);
             }
         } catch (error) { console.log(`Error return operation`, error) }
