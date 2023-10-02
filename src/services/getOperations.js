@@ -6,8 +6,7 @@ const { returnAccessTokenForItemId } = require('../services/accessToken');
 const sprintf = require('sprintf');
 
 
-let valueCount = 0
-let marker = 0
+let marker = true
 module.exports.getOperationsAfterGlobal = (a) => {
     (async function (data) {
         try {
@@ -29,19 +28,17 @@ const callOperations = (a) => {
             let fecha1 = returnDate(fecha2, -60);
             const ciclesBack = 12; // 12
             const timeDelay = 15500; // 250
-            (function recorreCiclos() {
+            (function recorreCiclos(n) {
                 returnOperation(urlBase, fecha1, fecha2, aToken, usrId, mlcItem, inventory_id);
                 fecha2 = fecha1;
                 fecha1 = returnDate(fecha2, -60);
                 // n++;
 
-                console.log(valueCount + 1)
-
-                if (valueCount < ciclesBack) {
-                    setTimeout(recorreCiclos, timeDelay, (valueCount + 1));
+                if (n < ciclesBack && marker) {
+                    setTimeout(recorreCiclos, timeDelay, (n + 1));
                 }
 
-            }());
+            }(0));
         } catch (error) { console.log(`error en retorna operaciones ++_+_+_+_+-=-=-=-`, error) }
     })(a);
 }
@@ -65,7 +62,7 @@ function returnOperation(a, b, c, d, e, f, g,) {
             if (sugarboo) {
                 /* analisis_previo_operaciones */
 
-                console.log('sugarboo', sugarboo.paging.total, valueCount)
+                console.log('sugarboo', sugarboo.paging.total,)
 
                 await insertTransitorio(`${sugarboo['paging']['total']}`, fecha1, fecha2, usrId, mlcItem, inventory_id);
                 if (sugarboo['paging']['total'] > 0) {
