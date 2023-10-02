@@ -7,6 +7,7 @@ const sprintf = require('sprintf');
 
 
 let valueCount = 0
+let marker = 0
 module.exports.getOperationsAfterGlobal = (a) => {
     (async function (data) {
         try {
@@ -27,18 +28,19 @@ const callOperations = (a) => {
             let fecha2 = getFechaHoy();
             let fecha1 = returnDate(fecha2, -60);
             const ciclesBack = 12; // 12
-            const timeDelay = 15000; // 250
+            const timeDelay = 15500; // 250
             (function recorreCiclos() {
                 returnOperation(urlBase, fecha1, fecha2, aToken, usrId, mlcItem, (valueCount + 1), inventory_id);
                 fecha2 = fecha1;
                 fecha1 = returnDate(fecha2, -60);
                 // n++;
 
-                console.log(valueCount)
+                console.log(valueCount + 1)
 
                 if (valueCount < ciclesBack) {
                     setTimeout(recorreCiclos, timeDelay, (valueCount + 1));
                 }
+
             }());
         } catch (error) { console.log(`error en retorna operaciones ++_+_+_+_+-=-=-=-`, error) }
     })(a);
