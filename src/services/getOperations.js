@@ -5,6 +5,8 @@ const { callOperaciones } = require('../constants.js');
 const { returnAccessTokenForItemId } = require('../services/accessToken');
 const sprintf = require('sprintf');
 
+
+let valueCount = 0
 module.exports.getOperationsAfterGlobal = (a) => {
     (async function (data) {
         try {
@@ -26,15 +28,15 @@ const callOperations = (a) => {
             let fecha1 = returnDate(fecha2, -60);
             const ciclesBack = 12; // 12
             const timeDelay = 15000; // 250
-            (function recorreCiclos(n) {
+            (function recorreCiclos() {
                 returnOperation(urlBase, fecha1, fecha2, aToken, usrId, mlcItem, (n + 1), inventory_id);
                 fecha2 = fecha1;
                 fecha1 = returnDate(fecha2, -60);
                 // n++;
-                if (n < ciclesBack) {
-                    setTimeout(recorreCiclos, timeDelay, (n + 1));
+                if (valueCount < ciclesBack) {
+                    setTimeout(recorreCiclos, timeDelay, (valueCount + 1));
                 }
-            }(0));
+            }());
         } catch (error) { console.log(`error en retorna operaciones ++_+_+_+_+-=-=-=-`, error) }
     })(a);
 }
