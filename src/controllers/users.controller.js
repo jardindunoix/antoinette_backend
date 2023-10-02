@@ -356,6 +356,8 @@ const getOperaciones = async (req, res) => {
       mlcItem: mkpl_id
     };
 
+
+    
     await getOperationsAfterGlobal(data);
 
     const oper_ = await getOperationsItem(usr_id);

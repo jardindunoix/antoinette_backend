@@ -25,7 +25,7 @@ const callOperations = (a) => {
             let fecha2 = getFechaHoy();
             let fecha1 = returnDate(fecha2, -60);
             const ciclesBack = 24; // 12
-            const timeDelay = 5000; // 250
+            const timeDelay = 10000; // 250
             (function recorreCiclos(n) {
                 returnOperation(urlBase, fecha1, fecha2, aToken, usrId, mlcItem, (n + 1), inventory_id);
                 fecha2 = fecha1;
@@ -67,7 +67,6 @@ function returnOperation(a, b, c, d, e, f, g, h) {
                 /* analisis_previo_operaciones */
                 await insertTransitorio(`valor llega null`, fecha1, fecha2, usrId, mlcItem, inventory_id);
             }
-
         } catch (error) { console.log(`Error return operation`, error) }
     })(a, b, c, d, e, f, g, h);
 }
