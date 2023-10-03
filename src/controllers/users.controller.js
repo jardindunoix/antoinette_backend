@@ -356,13 +356,16 @@ const getOperaciones = async (req, res) => {
       mlcItem: mkpl_id
     };
 
-    const operResponse = await getOperationsAfterGlobal(data);
+    await getOperationsAfterGlobal(data);
 
+    res.status(200).send("wating");
 
     setTimeout(async () => {
       const oper_ = await getOperationsItem(usr_id);
       const oper = oper_ ? oper_['rows'] : [];
-      res.status(200).send(oper);
+
+      console.log(oper)
+
     }, (15500 * 12 + 1000));
 
   } catch (error) {
