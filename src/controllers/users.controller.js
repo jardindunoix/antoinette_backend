@@ -341,7 +341,7 @@ const sellerInvoiceDetails = async (req, res) => {
 const getOperaciones = async (req, res) => {
   try {
 
-    console.log("????", JSON.parse(JSON.stringify(req.body)))
+    console.table(JSON.parse(JSON.stringify(req.body)))
 
     res.status(200).send('error');
 
@@ -353,6 +353,7 @@ const getOperaciones = async (req, res) => {
     //   inventID_variations,
     //   refToken,
     //   mkpl_id } = req.body;
+
     // const data = {
     //   inventory_id: inventID,
     //   inventory_id_variations: inventID_variations,
