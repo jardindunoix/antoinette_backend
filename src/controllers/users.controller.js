@@ -360,10 +360,6 @@ const getOperaciones = async (req, res) => {
 
     res.status(200).send("wating");
 
-    setTimeout(async () => {
-      await getOperationsItem(usr_id, mkpl_id, inventID);
-    }, (15500 * 12 + 3000));
-
   } catch (error) {
     console.log(`ERORR SUOER??`, error);
     res.status(200).send('error');
@@ -372,8 +368,6 @@ const getOperaciones = async (req, res) => {
 
 /* list of operations */
 const getOperacionesItems = async (req, res) => {
-  const { owner_id } = req.body;
-
   // (async function resolving(res) {
   //   try {
   //     const oper_ = await getOperationsItem(owner_id[0]);
@@ -383,13 +377,15 @@ const getOperacionesItems = async (req, res) => {
   // }
   // )(res);
 
-  setTimeout(async () => {
-    try {
-      const oper_ = await getOperationsItem(owner_id[0]);
-      const oper = oper_ ? oper_['rows'] : [];
-      res.status(200).send(oper);
-    } catch (error) { console.log(`ERORR SUOER??`, error); }
-  }, 5000);
+  try {
+    const { usr_id, mkpl_id, invent_id } = JSON.parse(req.body);
+    console.log(usr_id, mkpl_id, invent_idlll)
+
+
+    // const oper_ = await getOperationsItem(usr_id, mkpl_id, invent_id);
+    // const oper = oper_ ? oper_['rows'] : [];
+    res.status(200).json(oper);
+  } catch (error) { console.log(`ERORR SUOER??`, error); }
 }
 
 /* TODO CHECK improvement  */
