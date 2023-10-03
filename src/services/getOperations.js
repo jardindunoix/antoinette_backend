@@ -28,7 +28,7 @@ const callOperations = (a) => {
             let fecha1 = returnDate(fecha2, -60);
             const ciclesBack = 12; // 12
             const timeDelay = 15500; // 250
-            return (function recorreCiclos(n) {
+            await (function recorreCiclos(n) {
                 if (n < ciclesBack && marker) {
                     returnOperation(urlBase, fecha1, fecha2, aToken, usrId, mlcItem, inventory_id);
                     fecha2 = fecha1;
@@ -41,8 +41,10 @@ const callOperations = (a) => {
                     console.log('last lap')
                     return 'super ok'
                 }
-
             }(0));
+
+            return "outside of recursion"
+
         } catch (error) { console.log(`error en retorna operaciones ++_+_+_+_+-=-=-=-`, error) }
     })(a);
 }
