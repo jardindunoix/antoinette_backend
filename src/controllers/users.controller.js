@@ -340,10 +340,12 @@ const sellerInvoiceDetails = async (req, res) => {
 /* list of operations */
 const getOperaciones = async (req, res) => {
   try {
-  
+
+    console.log(JSON.parse(JSON.stringify(req.body)))
+
     res.status(200).send('error');
-  
-  
+
+
     // const {
     //   usr_id,
     //   sell_Id,
@@ -370,16 +372,6 @@ const getOperaciones = async (req, res) => {
 
 /* list of operations */
 const getOperacionesItems = async (req, res) => {
-
-  // (async function resolving(res) {
-  //   try {
-  //     const oper_ = await getOperationsItem(owner_id[0]);
-  //     const oper = oper_ ? oper_['rows'] : [];
-  //     res.status(200).send(oper);
-  //   } catch (error) { console.log(`ERORR SUOER??`, error); }
-  // }
-  // )(res);
-
   try {
     const { usr_id, mkpl_id, invent_id } = JSON.parse(JSON.stringify(req.body));
     const oper_ = await getOperationsItem(usr_id, mkpl_id, invent_id);
