@@ -29,12 +29,12 @@ const callOperations = (a) => {
             const ciclesBack = 8; // 12
             const timeDelay = 15500; // 250
             (function recorreCiclos(n) {
-                returnOperation(urlBase, fecha1, fecha2, aToken, usrId, mlcItem, inventory_id);
-                fecha2 = fecha1;
-                fecha1 = returnDate(fecha2, -60);
-
-                console.log(n, "")
                 if (n < ciclesBack && marker) {
+                    returnOperation(urlBase, fecha1, fecha2, aToken, usrId, mlcItem, inventory_id);
+                    fecha2 = fecha1;
+                    fecha1 = returnDate(fecha2, -60);
+
+                    console.log((n + 1), "")
 
                     setTimeout(recorreCiclos, timeDelay, (n + 1));
                 } else {
@@ -42,9 +42,6 @@ const callOperations = (a) => {
                 }
 
             }(0));
-
-            console.log("fuera, en la funcion")
-            return "finished caal operations"
         } catch (error) { console.log(`error en retorna operaciones ++_+_+_+_+-=-=-=-`, error) }
     })(a);
 }
