@@ -340,25 +340,27 @@ const sellerInvoiceDetails = async (req, res) => {
 /* list of operations */
 const getOperaciones = async (req, res) => {
   try {
-    const {
-      usr_id,
-      sell_Id,
-      inventID,
-      inventID_variations,
-      refToken,
-      mkpl_id } = req.body;
-    const data = {
-      inventory_id: inventID,
-      inventory_id_variations: inventID_variations,
-      seller_id: sell_Id.split('-')[1].trim(),
-      refToken,
-      usrId: usr_id,
-      mlcItem: mkpl_id
-    };
+  
+    res.status(200).send('error');
+  
+  
+    // const {
+    //   usr_id,
+    //   sell_Id,
+    //   inventID,
+    //   inventID_variations,
+    //   refToken,
+    //   mkpl_id } = req.body;
+    // const data = {
+    //   inventory_id: inventID,
+    //   inventory_id_variations: inventID_variations,
+    //   seller_id: sell_Id.split('-')[1].trim(),
+    //   refToken,
+    //   usrId: usr_id,
+    //   mlcItem: mkpl_id
+    // };
 
     await getOperationsAfterGlobal(data);
-
-    res.status(200).send("wating");
 
   } catch (error) {
     console.log(`ERORR SUOER??`, error);
