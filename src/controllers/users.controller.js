@@ -362,7 +362,7 @@ const getOperaciones = async (req, res) => {
     //   mlcItem: mkpl_id
     // };
 
-    await getOperationsAfterGlobal(data);
+    // await getOperationsAfterGlobal(data);
 
   } catch (error) {
     console.log(`ERORR SUOER??`, error);
