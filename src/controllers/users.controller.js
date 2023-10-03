@@ -366,7 +366,7 @@ const getOperaciones = async (req, res) => {
 
       console.log(oper)
 
-    }, (15500 * 12 + 1000));
+    }, (15500 * 12 + 3000));
 
   } catch (error) {
     console.log(`ERORR SUOER??`, error);
