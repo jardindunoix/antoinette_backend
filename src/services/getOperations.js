@@ -12,13 +12,13 @@ module.exports.getOperationsAfterGlobal = (a) => {
         try {
             await pool_pg.query('truncate analisis_operaciones_temp;');
             await pool_pg.query('truncate analisis_previo_operaciones_temp;');
-            callOperations(data)
+            return await callOperations(data)
         } catch (error) { console.log(`ERROR en el getOperationsAfterGlobal -- `, error); }
     })(a);
 }
 
 const callOperations = (a) => {
-    (async function (data_) {
+    return (async function (data_) {
         try {
             const { inventory_id, seller_id, refToken, usrId, mlcItem } = data_;
             const aToken_ = await returnAccessTokenForItemId(refToken);
@@ -33,13 +33,18 @@ const callOperations = (a) => {
                 fecha2 = fecha1;
                 fecha1 = returnDate(fecha2, -60);
 
+                console.log(n, "")
                 if (n < ciclesBack && marker) {
+
                     setTimeout(recorreCiclos, timeDelay, (n + 1));
                 } else {
                     console.log('last lap')
                 }
 
             }(0));
+
+            console.log("fuera, en la funcion")
+            return "finished caal operations"
         } catch (error) { console.log(`error en retorna operaciones ++_+_+_+_+-=-=-=-`, error) }
     })(a);
 }
