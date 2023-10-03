@@ -26,16 +26,17 @@ const callOperations = (a) => {
             const urlBase = sprintf(callOperaciones, seller_id, inventory_id);
             let fecha2 = getFechaHoy();
             let fecha1 = returnDate(fecha2, -60);
-            const ciclesBack = 12; // 12
+            const ciclesBack = 8; // 12
             const timeDelay = 15500; // 250
             (function recorreCiclos(n) {
                 returnOperation(urlBase, fecha1, fecha2, aToken, usrId, mlcItem, inventory_id);
                 fecha2 = fecha1;
                 fecha1 = returnDate(fecha2, -60);
-                // n++;
 
                 if (n < ciclesBack && marker) {
                     setTimeout(recorreCiclos, timeDelay, (n + 1));
+                } else {
+                    console.log('last lap')
                 }
 
             }(0));
@@ -61,19 +62,14 @@ function returnOperation(a, b, c, d, e, f, g,) {
 
             if (sugarboo) {
                 /* analisis_previo_operaciones */
-
                 console.log('sugarboo', sugarboo.paging.total,)
-
                 await insertTransitorio(`${sugarboo['paging']['total']}`, fecha1, fecha2, usrId, mlcItem, inventory_id);
-                if (sugarboo['paging']['total'] > 0) {
+                if (sugarboo['paging']['total'] > 0)
                     /* analisis_operaciones */
                     await insertData(sugarboo, fecha1, fecha2, usrId, mlcItem, inventory_id);
-                }
             } else {
                 /* analisis_previo_operaciones */
-                console.log('sugarboo null ?', sugarboo,)
-
-
+                console.log('sugarboo null ?', sugarboo)
                 await insertTransitorio(`valor llega null`, fecha1, fecha2, usrId, mlcItem, inventory_id);
             }
         } catch (error) { console.log(`Error return operation`, error) }
@@ -115,8 +111,7 @@ async function insertData(el, fecha1, fecha2, usrId, mlcItem, inventory_id) {
              available_filters,
              sort,
              available_sorts,
-             sku`
-                        ;
+             sku`;
 
                     const exterRef = ['sin ext ref', 'sin ext ref'];
 
@@ -167,7 +162,8 @@ async function insertData(el, fecha1, fecha2, usrId, mlcItem, inventory_id) {
                         if (el['name']) availableFiltersData += `${el['name']} - `;
                     });
 
-                    await pool_pg.query(`insert into analisis_operaciones_temp (${columnsVar}) 
+                    await pool_pg.query(
+                        `insert into analisis_operaciones_temp (${columnsVar}) 
                      values
                (
                 '${usrId}', 
@@ -196,14 +192,12 @@ async function insertData(el, fecha1, fecha2, usrId, mlcItem, inventory_id) {
                 '${availableFiltersData}', 
                 '${sortData}', 
                 '${availableSorts}', 
-                '${inventory_id}');
-                `);
-
+                '${inventory_id}');`);
 
                 } catch (error) { console.log(`shout loud`, error) }
             })
         } else {
-
+            console.log('else data null', el)
         }
         // } catch (error) { console.log(`Error en e catch de la no se que`, error) }
     } catch (error) { console.log(`Error en la insercion - ddbb`) }
@@ -254,4 +248,3 @@ function getFechaHoy() {
     const today = `${f.getFullYear()}-${month}-${days}`;
     return String(today);
 }
-

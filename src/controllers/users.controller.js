@@ -362,11 +362,8 @@ const getOperaciones = async (req, res) => {
     const oper = oper_ ? oper_['rows'] : [];
 
     res.status(200).send(oper);
-
   } catch (error) {
-
     console.log(`ERORR SUOER??`, error);
-
     res.status(200).send('error');
   }
 }
