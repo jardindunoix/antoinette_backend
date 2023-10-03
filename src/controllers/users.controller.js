@@ -379,7 +379,7 @@ const getOperacionesItems = async (req, res) => {
 
   try {
     const { usr_id, mkpl_id, invent_id } = JSON.parse(req.body);
-    console.log(usr_id, mkpl_id, invent_idlll)
+    console.log(usr_id, mkpl_id, invent_id)
 
 
     // const oper_ = await getOperationsItem(usr_id, mkpl_id, invent_id);
