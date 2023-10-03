@@ -356,12 +356,12 @@ const getOperaciones = async (req, res) => {
       mlcItem: mkpl_id
     };
 
-    await getOperationsAfterGlobal(data);
+    const operResponse = await getOperationsAfterGlobal(data);
 
-    const oper_ = await getOperationsItem(usr_id);
-    const oper = oper_ ? oper_['rows'] : [];
+    // const oper_ = await getOperationsItem(usr_id);
+    // const oper = oper_ ? oper_['rows'] : [];
 
-    res.status(200).send(oper);
+    res.status(200).send(operResponse);
   } catch (error) {
     console.log(`ERORR SUOER??`, error);
     res.status(200).send('error');

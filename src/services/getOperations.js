@@ -8,7 +8,7 @@ const sprintf = require('sprintf');
 
 let marker = true
 module.exports.getOperationsAfterGlobal = (a) => {
-    (async function (data) {
+    return (async function (data) {
         try {
             await pool_pg.query('truncate analisis_operaciones_temp;');
             await pool_pg.query('truncate analisis_previo_operaciones_temp;');
@@ -28,7 +28,7 @@ const callOperations = (a) => {
             let fecha1 = returnDate(fecha2, -60);
             const ciclesBack = 12; // 12
             const timeDelay = 15500; // 250
-            (function recorreCiclos(n) {
+            return (function recorreCiclos(n) {
                 if (n < ciclesBack && marker) {
                     returnOperation(urlBase, fecha1, fecha2, aToken, usrId, mlcItem, inventory_id);
                     fecha2 = fecha1;
@@ -39,6 +39,7 @@ const callOperations = (a) => {
                     setTimeout(recorreCiclos, timeDelay, (n + 1));
                 } else {
                     console.log('last lap')
+                    return 'super ok'
                 }
 
             }(0));
