@@ -1,6 +1,9 @@
 const { pool_pg } = require('../database');
 
 module.exports.getOperationsItem = async (owner) => {
+
+    console.log(owner)
+
     return await pool_pg.query(`
 SELECT 
 date_created,
