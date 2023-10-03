@@ -358,10 +358,13 @@ const getOperaciones = async (req, res) => {
 
     const operResponse = await getOperationsAfterGlobal(data);
 
-    // const oper_ = await getOperationsItem(usr_id);
-    // const oper = oper_ ? oper_['rows'] : [];
 
-    res.status(200).send(operResponse);
+    setTimeout(async () => {
+      const oper_ = await getOperationsItem(usr_id);
+      const oper = oper_ ? oper_['rows'] : [];
+      res.status(200).send(oper);
+    }, (15500 * 12 + 1000));
+
   } catch (error) {
     console.log(`ERORR SUOER??`, error);
     res.status(200).send('error');

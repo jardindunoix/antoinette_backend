@@ -1,15 +1,6 @@
 const { pool_pg } = require('../database');
-const sprintf = require('sprintf');
-const { fethcDDBBOperations } = require('../constants');
 
 module.exports.getOperationsItem = async (owner) => {
-
-    // console.log(
-    //     owner['ownerId'],
-    //     owner['mlcItem'],
-    //     owner['sku']
-    // );
-
     return await pool_pg.query(`
 SELECT 
 date_created,

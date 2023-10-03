@@ -8,17 +8,17 @@ const sprintf = require('sprintf');
 
 let marker = true
 module.exports.getOperationsAfterGlobal = (a) => {
-    return (async function (data) {
+    (async function (data) {
         try {
             await pool_pg.query('truncate analisis_operaciones_temp;');
             await pool_pg.query('truncate analisis_previo_operaciones_temp;');
-            return await callOperations(data)
+            await callOperations(data)
         } catch (error) { console.log(`ERROR en el getOperationsAfterGlobal -- `, error); }
     })(a);
 }
 
 const callOperations = (a) => {
-    return (async function (data_) {
+    (async function (data_) {
         try {
             const { inventory_id, seller_id, refToken, usrId, mlcItem } = data_;
             const aToken_ = await returnAccessTokenForItemId(refToken);
@@ -28,23 +28,15 @@ const callOperations = (a) => {
             let fecha1 = returnDate(fecha2, -60);
             const ciclesBack = 12; // 12
             const timeDelay = 15500; // 250
-            await (function recorreCiclos(n) {
+            (function recorreCiclos(n) {
                 if (n < ciclesBack && marker) {
                     returnOperation(urlBase, fecha1, fecha2, aToken, usrId, mlcItem, inventory_id);
                     fecha2 = fecha1;
                     fecha1 = returnDate(fecha2, -60);
-
                     console.log((n + 1), "")
-
                     setTimeout(recorreCiclos, timeDelay, (n + 1));
-                } else {
-                    console.log('last lap')
-                    return 'super ok'
                 }
             }(0));
-
-            return "outside of recursion"
-
         } catch (error) { console.log(`error en retorna operaciones ++_+_+_+_+-=-=-=-`, error) }
     })(a);
 }
