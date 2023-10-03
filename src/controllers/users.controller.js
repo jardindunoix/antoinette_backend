@@ -361,11 +361,7 @@ const getOperaciones = async (req, res) => {
     res.status(200).send("wating");
 
     setTimeout(async () => {
-      const oper_ = await getOperationsItem(usr_id, mkpl_id, inventID);
-      const oper = oper_ ? oper_['rows'] : [];
-
-      console.log(oper)
-
+      await getOperationsItem(usr_id, mkpl_id, inventID);
     }, (15500 * 12 + 3000));
 
   } catch (error) {
