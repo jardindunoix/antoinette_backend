@@ -378,7 +378,8 @@ const getOperacionesItems = async (req, res) => {
   // )(res);
 
   try {
-    const { usr_id, mkpl_id, invent_id } = JSON.parse(req.body);
+    const { usr_id, mkpl_id, invent_id } = JSON.parse(JSON.stringify(req.body));
+    // console.log(req.body)
     console.log(usr_id, mkpl_id, invent_id)
 
 
