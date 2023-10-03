@@ -368,6 +368,7 @@ const getOperaciones = async (req, res) => {
 
 /* list of operations */
 const getOperacionesItems = async (req, res) => {
+
   // (async function resolving(res) {
   //   try {
   //     const oper_ = await getOperationsItem(owner_id[0]);
@@ -379,12 +380,8 @@ const getOperacionesItems = async (req, res) => {
 
   try {
     const { usr_id, mkpl_id, invent_id } = JSON.parse(JSON.stringify(req.body));
-    // console.log(req.body)
-    console.log(usr_id, mkpl_id, invent_id)
-
-
-    // const oper_ = await getOperationsItem(usr_id, mkpl_id, invent_id);
-    // const oper = oper_ ? oper_['rows'] : [];
+    const oper_ = await getOperationsItem(usr_id, mkpl_id, invent_id);
+    const oper = oper_ ? oper_['rows'] : [];
     res.status(200).json(oper);
   } catch (error) { console.log(`ERORR SUOER??`, error); }
 }
