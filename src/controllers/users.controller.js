@@ -365,6 +365,8 @@ const getOperaciones = async (req, res) => {
 
     // await getOperationsAfterGlobal(data);
     res.status(200).send('ok');
+
+
   } catch (error) {
     console.log(`ERORR SUOER??`, error);
     res.status(200).send('error');
