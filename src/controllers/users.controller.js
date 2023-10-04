@@ -341,10 +341,9 @@ const sellerInvoiceDetails = async (req, res) => {
 const getOperaciones = async (req, res) => {
   try {
 
-    console.table(JSON.parse(JSON.stringify(req.body)))
 
-    res.status(200).send('error');
-
+    const data = JSON.parse(JSON.stringify(req.body))
+    console.table(data[0])
 
     // const {
     //   usr_id,
@@ -352,7 +351,8 @@ const getOperaciones = async (req, res) => {
     //   inventID,
     //   inventID_variations,
     //   refToken,
-    //   mkpl_id } = req.body;
+    //   mkpl_id
+    // } = req.body;
 
     // const data = {
     //   inventory_id: inventID,
@@ -364,7 +364,7 @@ const getOperaciones = async (req, res) => {
     // };
 
     // await getOperationsAfterGlobal(data);
-
+    res.status(200).send('ok');
   } catch (error) {
     console.log(`ERORR SUOER??`, error);
     res.status(200).send('error');

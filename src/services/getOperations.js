@@ -26,7 +26,7 @@ const callOperations = (a) => {
             const urlBase = sprintf(callOperaciones, seller_id, inventory_id);
             let fecha2 = getFechaHoy();
             let fecha1 = returnDate(fecha2, -60);
-            const ciclesBack = 12; // 12
+            const ciclesBack = 3; // 12
             const timeDelay = 15500; // 250
             (function recorreCiclos(n) {
                 if (n < ciclesBack && marker) {
