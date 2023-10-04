@@ -377,10 +377,11 @@ const getOperacionesItems = async (req, res) => {
 
     console.log(JSON.parse(JSON.stringify(req.body)))
 
-    const { usr_id, mkpl_id, invent_id } = JSON.parse(JSON.stringify(req.body));
-    const oper_ = await getOperationsItem(usr_id, mkpl_id, invent_id);
-    const oper = oper_ ? oper_['rows'] : [];
-    res.status(200).json(oper);
+    // const { usr_id, mkpl_id, invent_id } = JSON.parse(JSON.stringify(req.body));
+    // const oper_ = await getOperationsItem(usr_id, mkpl_id, invent_id);
+    // const oper = oper_ ? oper_['rows'] : [];
+    // res.status(200).json(oper);
+    res.status(200).json("ok items");
   } catch (error) { console.log(`ERORR SUOER??`, error); }
 }
 
