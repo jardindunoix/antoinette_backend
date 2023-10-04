@@ -341,8 +341,8 @@ const sellerInvoiceDetails = async (req, res) => {
 const getOperaciones = async (req, res) => {
   try {
 
-
     const data_ = JSON.parse(JSON.stringify(req.body))
+
     console.table(data_[0])
 
     const {
@@ -379,6 +379,7 @@ const getOperacionesItems = async (req, res) => {
     console.log(usr_id, mkpl_id, inventID)
     const oper_ = await getOperationsItem(usr_id, mkpl_id, inventID);
     const oper = oper_ ? oper_['rows'] : [];
+    console.log(oper.length)
     res.status(200).json(oper);
   } catch (error) { console.log(`ERORR SUOER??`, error); }
 }
