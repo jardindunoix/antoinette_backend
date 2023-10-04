@@ -355,8 +355,7 @@ const getOperaciones = async (req, res) => {
 
     const data = {
       inventory_id: inventID,
-      inventory_id_variations: inventID_variations,
-      seller_id: sell_Id.split('-')[1].trim(),
+      seller_id: sell_Id,
       refToken,
       usrId: usr_id,
       mlcItem: mkpl_id
