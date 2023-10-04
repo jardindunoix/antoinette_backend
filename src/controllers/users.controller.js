@@ -342,28 +342,27 @@ const getOperaciones = async (req, res) => {
   try {
 
 
-    const data = JSON.parse(JSON.stringify(req.body))
+    const data_ = JSON.parse(JSON.stringify(req.body))
     console.table(data[0])
 
-    // const {
-    //   usr_id,
-    //   sell_Id,
-    //   inventID,
-    //   inventID_variations,
-    //   refToken,
-    //   mkpl_id
-    // } = req.body;
+    const {
+      usr_id,
+      sell_Id,
+      inventID,
+      refToken,
+      mkpl_id
+    } = data_[0];
 
-    // const data = {
-    //   inventory_id: inventID,
-    //   inventory_id_variations: inventID_variations,
-    //   seller_id: sell_Id.split('-')[1].trim(),
-    //   refToken,
-    //   usrId: usr_id,
-    //   mlcItem: mkpl_id
-    // };
+    const data = {
+      inventory_id: inventID,
+      inventory_id_variations: inventID_variations,
+      seller_id: sell_Id.split('-')[1].trim(),
+      refToken,
+      usrId: usr_id,
+      mlcItem: mkpl_id
+    };
 
-    // await getOperationsAfterGlobal(data);
+    await getOperationsAfterGlobal(data);
     res.status(200).send('ok');
 
 
@@ -376,14 +375,12 @@ const getOperaciones = async (req, res) => {
 /* list of operations */
 const getOperacionesItems = async (req, res) => {
   try {
-
-    console.log(JSON.parse(JSON.stringify(req.body)))
-
-    // const { usr_id, mkpl_id, invent_id } = JSON.parse(JSON.stringify(req.body));
-    // const oper_ = await getOperationsItem(usr_id, mkpl_id, invent_id);
-    // const oper = oper_ ? oper_['rows'] : [];
-    // res.status(200).json(oper);
-    res.status(200).json("ok items");
+    const data = JSON.parse(JSON.stringify(req.body))
+    const { usr_id, mkpl_id, inventID } = data
+    console.log(usr_id, mkpl_id, inventID)
+    const oper_ = await getOperationsItem(usr_id, mkpl_id, inventID);
+    const oper = oper_ ? oper_['rows'] : [];
+    res.status(200).json(oper);
   } catch (error) { console.log(`ERORR SUOER??`, error); }
 }
 
