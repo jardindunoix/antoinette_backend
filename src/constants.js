@@ -23,12 +23,12 @@ status_granted,
 user_registered,
 fecha AS registration_date
 FROM sellers_active
--- WHERE nickname <> 'MAMA6075595'
--- AND nickname <> 'TESTYNQN2K5C'
--- AND nickname <> 'USBLTRADING'
--- AND nickname <> 'TESTQZ6KDYZG' -- USEFULL TESTER
+WHERE nickname <> 'MAMA6075595'
 -- AND nickname <> 'TETE2018224' -- USEFULL TESTER
--- AND nickname <> 'USBLTRAIDING' -- USBLTRAIDING
+-- AND nickname <> 'TESTYNQN2K5C'
+-- AND nickname <> 'TESTQZ6KDYZG' -- USEFULL TESTER
+AND nickname <> 'USBLTRADING'
+AND nickname <> 'USBLTRAIDING' -- USBLTRAIDING
 ORDER BY status_granted DESC, nickname ASC
 ;
 `;
