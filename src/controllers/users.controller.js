@@ -119,7 +119,6 @@ const saveUser = async (req, res) => {
   }
 }
 
-
 /* list sellers */
 const listUsers = async (req, res) => {
   try {
