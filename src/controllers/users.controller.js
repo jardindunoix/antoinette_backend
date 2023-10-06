@@ -251,7 +251,6 @@ const listGrantedUsersAdmin = async (req, res) => {
 const singleMkpl = async (req, res) => {
   try {
 
-
     const { refresh, mlc } = await req.body;
     // const mlcData = await pool_pg.query(`
     // SELECT * FROM mlc_variations WHERE id_mlc = '${mlc}'
