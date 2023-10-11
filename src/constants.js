@@ -59,6 +59,7 @@ AND nickname <> 'USBLTRAIDING' -- *****
 AND nickname <> 'TETE2018224'
 AND nickname <> 'TESTYNQN2K5C'
 AND nickname <> 'MAMA6075595'
+AND nickname not ilike '%360LION%'
 ORDER BY status_granted DESC, nickname ASC
 ;
 `;

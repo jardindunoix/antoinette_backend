@@ -23,7 +23,7 @@ module.exports.vRT = async (urlActok) => {
     const accessToken = await fetch.post(`https://api.mercadolibre.com/oauth/token?grant_type=authorization_code&client_id=3698739416306050&client_secret=LwgOJm33WigcfXp8AL2OyKZN6FS4YoME&code=${urlActok}&redirect_uri=https://auth.sellers-info.cl`, {
       headers: { "Content-Type": "application/json" }
     })
-      .then(data => data).catch(err => console.log(`Error en FETCH (data null pk es no se puede usar dos veces)`, err['message']));
+      .then(data => data).catch(err => console.log(`Error en FETCH (data null pk es no se puede usar dos veces, probablemente e actualizo la pagina)`, err['message']));
 
     return accessToken;
 
