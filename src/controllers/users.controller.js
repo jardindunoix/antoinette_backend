@@ -45,7 +45,7 @@ const loginUser = async (req, res) => {
 
   const output_ = await pool_pg.query(`SELECT 
   name, username, password, owner_id, user_type, validation
-  FROM users WHERE username='${user.trim()}' AND password='${pwd.trim()}' LIMIT 1;`);
+  FROM users WHERE username='${user.toLowerCase().trim()}' AND password='${pwd.trim()}' LIMIT 1;`);
 
   const list = output_?.rows;
 
