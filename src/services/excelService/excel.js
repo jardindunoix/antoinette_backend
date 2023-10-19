@@ -17,7 +17,8 @@ async function insertExcelData(requestList) {
         '${el.inbound}',
         '${el.sku} ',
         '${el.items}',
-        '${el.selling}'
+        '${el.selling}',
+        '${el.currency}'
         )`
       values += index < requestList.length - 1 ? ', ' + "\n" : ''
     })
@@ -30,7 +31,8 @@ async function insertExcelData(requestList) {
       inbound,
       sku,
       items,
-      selling
+      selling,
+      currency
     ) VALUES
           ${values};`;
     await pool_pg.query(queryDelete);
