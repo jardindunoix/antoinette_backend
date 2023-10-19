@@ -7,8 +7,8 @@ const uploadInvoiceDoc = async (req, res) => {
 
   console.table(requestList)
 
-  // const respInsert = await insertExcelData(requestList)
-  res.status(200).json({ response: "respInsert" });
+  const respInsert = await insertExcelData(requestList)
+  res.status(200).json({ response: respInsert });
 }
 
 module.exports = {
