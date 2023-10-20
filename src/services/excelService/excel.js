@@ -4,9 +4,9 @@ async function insertExcelData(requestList) {
   try {
     let values = ''
     const inventoryColumn = requestList[0].invoice_number
-/* 
-
-*/
+    /* 
+    
+    */
 
     requestList.forEach((el, index) => {
       values += `
@@ -44,6 +44,18 @@ async function insertExcelData(requestList) {
   }
 }
 
+
+async function listInvoicesData() {
+
+  return await pool_pg.query(`SELECT
+              invoice_number
+              FROM invoice
+              GROUP BY
+              invoice_number
+              ;`)
+}
+
 module.exports = {
-  insertExcelData
+  insertExcelData,
+  listInvoicesData
 };
