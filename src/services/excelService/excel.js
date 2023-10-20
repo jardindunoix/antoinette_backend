@@ -47,12 +47,13 @@ async function insertExcelData(requestList) {
 
 async function listInvoicesData() {
 
-  return await pool_pg.query(`SELECT
+  const list = await pool_pg.query(`SELECT
               invoice_number
               FROM invoice
               GROUP BY
               invoice_number
               ;`)
+  return list.rows
 }
 
 module.exports = {
