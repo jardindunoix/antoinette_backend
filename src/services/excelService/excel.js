@@ -54,7 +54,6 @@ async function listInvoicesData() {
               invoice_number
               ;`)
 
-    console.log(list.rows)
     return list.rows
   } catch (error) {
     return []

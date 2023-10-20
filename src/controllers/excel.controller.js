@@ -4,7 +4,6 @@ const { insertExcelData, listInvoicesData } = require('../services/excelService/
 /* load excell in */
 const listInvoices = async (req, res) => {
   try {
-    const requestInvoices = JSON.parse(JSON.stringify(req.body))
     const list = await listInvoicesData()
     res.status(200).json({ response: list });
   } catch (error) {
