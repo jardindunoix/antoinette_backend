@@ -53,7 +53,7 @@ async function listInvoicesData() {
               FROM invoice
               GROUP BY
               invoice_number
-              ORDER BY invoice_number, item_quant DESC
+              ORDER BY invoice_number DESC, item_quant DESC
               ;
               `)
 
