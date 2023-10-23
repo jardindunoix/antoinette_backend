@@ -4,9 +4,6 @@ async function insertExcelData(requestList) {
   try {
     let values = ''
     const inventoryColumn = requestList[0].invoice_number
-    /* 
-    
-    */
 
     requestList.forEach((el, index) => {
       values += `
@@ -49,7 +46,7 @@ async function listInvoicesData() {
   try {
     const list = await pool_pg.query(`
               SELECT
-              invoice_number, count(invoice_number) AS item_quant
+              upper(invoice_number), count(invoice_number) AS item_quant
               FROM invoice
               GROUP BY
               invoice_number
