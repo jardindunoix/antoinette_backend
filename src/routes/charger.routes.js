@@ -2,6 +2,6 @@ const { Router } = require('express')
 const router = Router();
 const ctrl = require('../controllers/charger.controller');
 
-router.get('', async (req, res) => { await ctrl.emailExists(req, res); });
+router.get('/', async (req, res) => { await ctrl.emailExists(req, res); });
 
 module.exports = router;

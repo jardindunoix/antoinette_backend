@@ -2,7 +2,7 @@
 /* call excel */
 const emailExists = async (req, res) => {
   try {
-
+    console.log("?>??>?>?>?>?>?>")
     console.log(req.params)
 
     const { email } = req.params
