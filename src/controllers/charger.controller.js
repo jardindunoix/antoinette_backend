@@ -15,7 +15,7 @@ const emailExists = async (req, res) => {
     // res.status(statusValue).json({ "resp": (email_ === "rgarrido@dhemax.com") })
 
 
-    res.status(statusValue).json({ "resp": true })
+    res.status(200).json({ "resp": true })
   } catch (error) {
     console.log('error', error)
   }
