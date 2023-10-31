@@ -32,6 +32,7 @@ const getPools = (req, res) => {
 
 module.exports = {
   emailExists,
+  getPools
 };
 
 
