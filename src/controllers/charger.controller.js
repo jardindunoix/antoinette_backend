@@ -2,6 +2,9 @@
 /* call excel */
 const emailExists = async (req, res) => {
   try {
+
+console.log(req.params)
+
     const { email } = req.params
     console.log(req.params)
     const email_ = email.toLowerCase()
