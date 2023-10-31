@@ -1,5 +1,5 @@
-const result_fake = {
-  "data": [
+const result_fake = 
+  [
     {
       "id": 34,
       "pool_name": "BuenaVentura",
@@ -200,7 +200,7 @@ const result_fake = {
         ],
     },
   ]
-}
+
 
 
 module.exports = { result_fake }
