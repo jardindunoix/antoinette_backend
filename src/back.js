@@ -11,7 +11,8 @@ const fileUpload = require('express-fileupload');
 
 const userRoutes = require('./routes/user.routes.js');
 const userDocs = require('./routes/documentation.routes.js');
-const excelDocs = require('./routes/excel.routes.js');
+const excelInvoceRoute = require('./routes/excel.routes.js');
+const chargerRoute = require('./routes/charger.routes.js');
 const http = require('http');
 
 // const { Server } = require('socket.io');
@@ -54,8 +55,9 @@ app.use(express.json({ limit: '51000000000000mb', extended: true, parameterLimit
 
 /* routes */
 app.use('/api/users', userRoutes);
+app.use('/api/excel', excelInvoceRoute);
 app.use('/api/documentation', userDocs);
-app.use('/api/excel', excelDocs);
+app.use('/client/exists', chargerRoute);
 
 // const io = new Server(server, { cors: { origin: `${url_client}`, methods: ['GET', 'POST'] } });
 
