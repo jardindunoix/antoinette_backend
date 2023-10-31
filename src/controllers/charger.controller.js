@@ -5,14 +5,17 @@ const emailExists = async (req, res) => {
     console.log("?>??>?>?>?>?>?>")
     console.log(req.params)
 
-    const { email } = req.params
-    console.log(req.params)
-    const email_ = email.toLowerCase()
-    console.log(`${email_ === "rgarrido@dhemax.com"} - ${email_} --`)
-    const statusValue = email_ === "rgarrido@dhemax.com" ? 200 : 400
+    // const { email } = req.params
+    // console.log(req.params)
+    // const email_ = email.toLowerCase()
+    // console.log(`${email_ === "rgarrido@dhemax.com"} - ${email_} --`)
+    // const statusValue = email_ === "rgarrido@dhemax.com" ? 200 : 400
 
-    // res.status(200).json({ "resp": (email_ === "rgarrido@dhemax.com") })
-    res.status(statusValue).json({ "resp": (email_ === "rgarrido@dhemax.com") })
+    // // res.status(200).json({ "resp": (email_ === "rgarrido@dhemax.com") })
+    // res.status(statusValue).json({ "resp": (email_ === "rgarrido@dhemax.com") })
+
+
+    res.status(statusValue).json({ "resp": true })
   } catch (error) {
     console.log('error', error)
   }
