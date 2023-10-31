@@ -57,7 +57,7 @@ app.use(express.json({ limit: '51000000000000mb', extended: true, parameterLimit
 app.use('/api/users', userRoutes);
 app.use('/api/excel', excelInvoceRoute);
 app.use('/api/documentation', userDocs);
-app.use('/api/charger/', chargerRoute);
+app.use('/api/charger', chargerRoute);
 
 // const io = new Server(server, { cors: { origin: `${url_client}`, methods: ['GET', 'POST'] } });
 
