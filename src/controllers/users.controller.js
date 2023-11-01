@@ -393,7 +393,7 @@ const getOperacionesDDBB = async (req, res) => {
     const operDDBB = await getOperationsAfterGlobalDDBB(data);
     res.status(200).json({ resp: operDDBB.rows });
   } catch (error) {
-    console.log(`ERORR SUOER??`, error);
+    console.log(`ERORR ????`, error);
     res.status(200).send('error');
   }
 }
