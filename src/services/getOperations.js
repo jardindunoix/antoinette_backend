@@ -48,8 +48,7 @@ FROM analisis_operaciones_invoice
 where aaa_user_id = '${a.usr_id}'
 and item_mkpl_id = '${a.mkpl_id}'
 or sku = '${a.inventID}'
-order by aaa_user_id desc,
-item_mkpl_id 
+order by fecha_orden DESC
 ;
         `)
 
