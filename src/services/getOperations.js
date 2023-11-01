@@ -45,13 +45,13 @@ module.exports.getOperationsAfterGlobalDDBB = async (a) => {
 		fecha_orden,
 		cur_date
 FROM analisis_operaciones_invoice
-where aaa_user_id = '544523712'
-and item_mkpl_id = 'MLC1329010658'
-or sku='OQNF04377'
+where aaa_user_id = '${a.usr_id}'
+and item_mkpl_id = '${a.mkpl_id}'
+or sku='${a.inventID}'
 order by aaa_user_id desc,
 item_mkpl_id 
 ;
-        `) && []
+        `) && {}
 
 
     } catch (error) { console.log(`ERROR en el getOperationsAfterGlobal -- `, error); }

@@ -393,7 +393,10 @@ const getOperacionesDDBB = async (req, res) => {
 
     console.log(data)
 
-    // await getOperationsAfterGlobalDDBB(data);
+    const operDDBB = await getOperationsAfterGlobalDDBB(data);
+
+    console.log(operDDBB)
+
     res.status(200).send('ok');
 
 
