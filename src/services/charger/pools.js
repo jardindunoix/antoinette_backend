@@ -1,4 +1,4 @@
-const result_fake = 
+const result_fake =
   [
     {
       "id": 34,
