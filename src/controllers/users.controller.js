@@ -375,23 +375,23 @@ const getOperacionesDDBB = async (req, res) => {
 
     const data_ = JSON.parse(JSON.stringify(req.body))
 
-    console.log(data_[0])
+    const {
+      usr_id,
+      sell_Id,
+      inventID,
+      refToken,
+      mkpl_id
+    } = data_[0];
 
-    // const {
-    //   usr_id,
-    //   sell_Id,
-    //   inventID,
-    //   refToken,
-    //   mkpl_id
-    // } = data_[0];
+    const data = {
+      usr_id,
+      sell_Id,
+      inventID,
+      refToken,
+      mkpl_id
+    };
 
-    // const data = {
-    //   inventory_id: inventID,
-    //   seller_id: sell_Id,
-    //   refToken,
-    //   usrId: usr_id,
-    //   mlcItem: mkpl_id
-    // };
+    console.log(data)
 
     // await getOperationsAfterGlobalDDBB(data);
     res.status(200).send('ok');
