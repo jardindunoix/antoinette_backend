@@ -390,14 +390,8 @@ const getOperacionesDDBB = async (req, res) => {
       refToken,
       mkpl_id
     };
-
     const operDDBB = await getOperationsAfterGlobalDDBB(data);
-
-    console.log(operDDBB)
-
-    res.status(200).send('ok');
-
-
+    res.status(200).json({ resp: operDDBB.rows });
   } catch (error) {
     console.log(`ERORR SUOER??`, error);
     res.status(200).send('error');
