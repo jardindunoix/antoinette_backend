@@ -20,7 +20,11 @@ module.exports.getOperationsAfterGlobal = (a) => {
 module.exports.getOperationsAfterGlobalDDBB = async (a) => {
     try {
 
-        console.log(a)
+        console.log(`
+            where aaa_user_id = '${a.usr_id}'
+            and item_mkpl_id = '${a.mkpl_id}'
+            or sku='${a.inventID}'
+        `)
 
         return await pool_pg.query(`
         SELECT 
