@@ -391,8 +391,6 @@ const getOperacionesDDBB = async (req, res) => {
       mkpl_id
     };
 
-    console.log(data)
-
     const operDDBB = await getOperationsAfterGlobalDDBB(data);
 
     console.log(operDDBB)
