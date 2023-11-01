@@ -375,7 +375,7 @@ const getOperacionesDDBB = async (req, res) => {
 
     const data_ = JSON.parse(JSON.stringify(req.body))
 
-    console.table(data_[0])
+    console.log(data_[0])
 
     // const {
     //   usr_id,
