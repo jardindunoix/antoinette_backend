@@ -32,6 +32,7 @@ router.post('/singleMkpl', async (req, res) => { await ctrl.singleMkpl(req, res)
 
 /* responds for operation  */
 router.post('/getOperaciones', async (req, res) => { await ctrl.getOperaciones(req, res); });
+router.post('/getOperacionesDDBB', async (req, res) => { await ctrl.getOperacionesDDBB(req, res); });
 router.post('/getOperacionesItems', async (req, res) => { await ctrl.getOperacionesItems(req, res); });
 
 router.post('/codeRT', async (req, res) => { await ctrl.codeRT(req, res); });

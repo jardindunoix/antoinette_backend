@@ -8,7 +8,7 @@ const {
 } = require('../constants');
 const { getSingleMkpl, finalResultArray } = require('../services/fetchSingleItems.js');
 const { getListGrantedFromDDBB, getListGrantedFromActive, getListGrantedFromActiveAgent } = require('../services/getListGrantedFromDDBB');
-const { getOperationsAfterGlobal } = require('../services/getOperations.js');
+const { getOperationsAfterGlobal, getOperationsAfterGlobalDDBB } = require('../services/getOperations.js');
 const { getOperationsItem } = require('../services/getOperationsItem');
 const { getOperationsAfterGlobalInvoice } = require('../services/getOperationsAfterGlobal');
 const { vRT } = require('../services/accessToken');
@@ -370,6 +370,40 @@ const getOperaciones = async (req, res) => {
 }
 
 /* list of operations */
+const getOperacionesDDBB = async (req, res) => {
+  try {
+
+    const data_ = JSON.parse(JSON.stringify(req.body))
+
+    console.table(data_[0])
+
+    // const {
+    //   usr_id,
+    //   sell_Id,
+    //   inventID,
+    //   refToken,
+    //   mkpl_id
+    // } = data_[0];
+
+    // const data = {
+    //   inventory_id: inventID,
+    //   seller_id: sell_Id,
+    //   refToken,
+    //   usrId: usr_id,
+    //   mlcItem: mkpl_id
+    // };
+
+    // await getOperationsAfterGlobalDDBB(data);
+    res.status(200).send('ok');
+
+
+  } catch (error) {
+    console.log(`ERORR SUOER??`, error);
+    res.status(200).send('error');
+  }
+}
+
+/* list of operations */
 const getOperacionesItems = async (req, res) => {
   try {
     const data = JSON.parse(JSON.stringify(req.body))
@@ -647,6 +681,7 @@ module.exports = {
   listGrantedActive,
   singleMkpl,
   getOperaciones,
+  getOperacionesDDBB,
   codeRT,
   getOperacionesItems,
   getInvoiceErrorList,

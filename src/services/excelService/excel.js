@@ -47,7 +47,7 @@ async function listInvoicesData() {
     const list = await pool_pg.query(`
                   SELECT
                   invoice_number,
-                  count(invoice_number) AS item_quant,
+                  count(invoice_number) as item_quant,
                   sum(trunc(cast(selling as decimal), 2)) as sell_value
                   FROM invoice
                   GROUP BY

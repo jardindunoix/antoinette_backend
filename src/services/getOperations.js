@@ -17,6 +17,46 @@ module.exports.getOperationsAfterGlobal = (a) => {
     })(a);
 }
 
+module.exports.getOperationsAfterGlobalDDBB = async (a) => {
+    try {
+        return await pool_pg.query(`
+        SELECT 
+        item_mkpl_id,
+        aaa_user_id,
+		results_seller_id,
+		results_inventory_id,
+		sku,
+		ddd_results_date_created,
+		date_created,
+		hhh_results_type,
+		eee_results_detail_available_quantity,
+		results_detail_not_available_quantity,
+		results_detail_not_available_detail,
+		fff_results_result_total,
+		results_result_available_quantity,
+		results_result_not_available_quantity,
+		results_result_not_available_detail,
+		results_external_references_type,
+		ggg_results_external_references_value,
+		filters,
+		available_filters,
+		sort,
+		available_sorts,
+		fecha_orden,
+		cur_date
+FROM analisis_operaciones_invoice
+where aaa_user_id = '544523712'
+and item_mkpl_id = 'MLC1329010658'
+or sku='OQNF04377'
+order by aaa_user_id desc,
+item_mkpl_id 
+;
+        `) && []
+
+
+    } catch (error) { console.log(`ERROR en el getOperationsAfterGlobal -- `, error); }
+}
+
 const callOperations = (a) => {
     (async function (data_) {
         try {
