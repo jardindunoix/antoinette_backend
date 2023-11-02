@@ -45,16 +45,16 @@ async function insertExcelData(requestList) {
 async function listInvoicesData() {
   try {
     const list = await pool_pg.query(`
-                  SELECT
-                  invoice_number,
-                  count(invoice_number) as item_quant,
-                  sum(trunc(cast(selling as decimal), 2)) as sell_value
-                  FROM invoice
-                  GROUP BY
-                  invoice_number
-                  ORDER BY 
-                  invoice_number desc
-                  ;
+                      SELECT
+                      invoice_number,
+                      count(invoice_number) AS item_quant,
+                      sum(trunc(cast(selling as decimal), 2) * cast(items as int)) as sell_value
+                      FROM invoice
+                      GROUP BY
+                      invoice_number
+                      ORDER BY 
+                      invoice_number desc
+                      ;
               `)
 
     return list.rows
