@@ -29,7 +29,7 @@ const getInvoiceData = async (req, res) => {
 
     const invData = await listInvoiceInfoDetail(invoiceNumber)
 
-    console.log(invData)
+    console.table(invData)
 
 
     res.status(200).json({ response: invData });
