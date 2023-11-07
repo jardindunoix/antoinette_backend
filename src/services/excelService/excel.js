@@ -73,7 +73,7 @@ async function listInvoiceInfoDetail(invnumb) {
                         inbound,
                         sku, 
                         items,
-                        trunc(cast(selling as decimal), 2),
+                        trunc(cast(selling as decimal), 2) as selling,
                         currency,
                         mlc,
                         owner_id
