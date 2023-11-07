@@ -44,7 +44,8 @@ module.exports.getOperationsAfterGlobalDDBB = async (a) => {
 		available_sorts,
 		fecha_orden,
 		cur_date
-FROM analisis_operaciones_invoice
+-- FROM analisis_operaciones_invoice
+FROM operations
 where aaa_user_id = '${a.usr_id}'
 and item_mkpl_id = '${a.mkpl_id}'
 or sku = '${a.inventID}'
