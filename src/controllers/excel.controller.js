@@ -22,9 +22,23 @@ const uploadInvoiceDoc = async (req, res) => {
   }
 }
 
+/* invoice */
+const getInvoiceData = async (req, res) => {
+  try {
+    const request = JSON.parse(JSON.stringify(req.body))
+
+    console.log(request)
+
+    res.status(200).json({ response: respInsert });
+  } catch (error) {
+    res.status(200).json({ response: "error" });
+  }
+}
+
 module.exports = {
   listInvoices,
   uploadInvoiceDoc,
+  getInvoiceData,
 };
 
 
