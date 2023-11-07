@@ -41,7 +41,6 @@ async function insertExcelData(requestList) {
   }
 }
 
-
 async function listInvoicesData() {
   try {
     const list = await pool_pg.query(`
@@ -64,7 +63,18 @@ async function listInvoicesData() {
 
 }
 
+async function listInvoiceInfoDetail(invnumb) {
+  try {
+    const invData = await pool_pg.query(`SELECT * FROM invoice WHERE invoice_number = '${invnumb}';`)
+
+    return invData.rows
+  } catch (error) {
+    error
+  }
+}
+
 module.exports = {
   insertExcelData,
-  listInvoicesData
+  listInvoicesData,
+  listInvoiceInfoDetail
 };

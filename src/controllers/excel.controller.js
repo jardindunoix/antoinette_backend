@@ -1,5 +1,5 @@
 // const { leerExcel } = require('../services/excelService/excelFunc');
-const { insertExcelData, listInvoicesData } = require('../services/excelService/excel');
+const { insertExcelData, listInvoicesData, listInvoiceInfoDetail } = require('../services/excelService/excel');
 
 /* call excel */
 const listInvoices = async (req, res) => {
@@ -25,9 +25,12 @@ const uploadInvoiceDoc = async (req, res) => {
 /* invoice */
 const getInvoiceData = async (req, res) => {
   try {
-    const request = JSON.parse(JSON.stringify(req.body))
+    const { invoiceNumber } = JSON.parse(JSON.stringify(req.body))
 
-    console.log(request)
+    const invData = await listInvoiceInfoDetail(invoiceNumber)
+
+    console.log(invData)
+
 
     res.status(200).json({ response: respInsert });
   } catch (error) {
