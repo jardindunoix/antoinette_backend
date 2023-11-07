@@ -77,7 +77,9 @@ async function listInvoiceInfoDetail(invnumb) {
                         currency,
                         mlc,
                         owner_id
-                    FROM invoice WHERE invoice_number = '${invnumb}';
+                    FROM invoice WHERE invoice_number = '${invnumb}'
+                    ORDER BY sku ASC
+                    ;
     `)
 
     return invData.rows
