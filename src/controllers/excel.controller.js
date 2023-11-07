@@ -32,7 +32,7 @@ const getInvoiceData = async (req, res) => {
     console.log(invData)
 
 
-    res.status(200).json({ response: respInsert });
+    res.status(200).json({ response: invData });
   } catch (error) {
     res.status(200).json({ response: "error" });
   }
