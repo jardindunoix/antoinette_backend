@@ -65,7 +65,20 @@ async function listInvoicesData() {
 
 async function listInvoiceInfoDetail(invnumb) {
   try {
-    const invData = await pool_pg.query(`SELECT * FROM invoice WHERE invoice_number = '${invnumb}';`)
+    const invData = await pool_pg.query(`
+                    SELECT
+                        invoice_number,
+                        invoice_date,
+                        invoice_terms,
+                        inbound,
+                        sku, 
+                        items,
+                        trunc(cast(selling as decimal), 2),
+                        currency,
+                        mlc,
+                        owner_id
+                    FROM invoice WHERE invoice_number = '${invnumb}';
+    `)
 
     return invData.rows
   } catch (error) {
