@@ -71,12 +71,12 @@ async function listInvoiceInfoDetail(invnumb) {
                         invoice_date,
                         invoice_terms,
                         inbound,
+                        owner_id,
+                        mlc,
                         sku, 
                         items,
                         trunc(cast(selling as decimal), 2) as selling,
-                        currency,
-                        mlc,
-                        owner_id
+                        currency
                     FROM invoice WHERE invoice_number = '${invnumb}'
                     ORDER BY sku ASC, inbound ASC
                     ;
