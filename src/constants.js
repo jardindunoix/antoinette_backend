@@ -11,7 +11,9 @@ WHERE
 aaa_user_id = '%s'
 ;
 `;
-const fetchSellersDDBB = `SELECT * FROM sellers_menu ORDER BY nickname DESC;`;
+const fetchSellersDDBB = `
+SELECT * FROM sellers_menu ORDER BY nickname DESC;
+`;
 const fetchSellersActive = `
 SELECT 
 id,
@@ -24,10 +26,10 @@ user_registered,
 fecha AS registration_date
 FROM sellers_active
 -- WHERE nickname <> 'MAMA6075595'
--- AND nickname <> 'TETE2018224' -- USEFULL TESTER
 -- AND nickname <> 'TESTYNQN2K5C'
--- AND nickname <> 'TESTQZ6KDYZG' -- USEFULL TESTER
 -- AND nickname <> 'USBLTRADING'
+-- AND nickname <> 'TETE2018224' -- USEFULL TESTER
+-- AND nickname <> 'TESTQZ6KDYZG' -- USEFULL TESTER
 -- AND nickname <> 'USBLTRAIDING' -- USBLTRAIDING
 ORDER BY status_granted DESC, nickname ASC
 ;
