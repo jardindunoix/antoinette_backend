@@ -77,13 +77,17 @@ async function listInvoiceInfoDetail(invnumb) {
                         sku, 
                         items,
                         trunc(cast(selling as decimal), 2) as selling,
-                        selling_date,
+                        price_meli,
+                        price_meli_date,
                         currency
                     FROM invoice WHERE invoice_number = '${invnumb}'
                     ORDER BY sku ASC, inbound ASC
                     ;
     `)
 
+    /* 
+
+    */
     return invData.rows
   } catch (error) {
     error
