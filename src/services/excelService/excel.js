@@ -89,7 +89,7 @@ LEFT JOIN
 users
 ON trim(invoice.owner_id) = trim(users.owner_id)
 WHERE invoice.invoice_number = '${invnumb}'
-ORDER BY invoice.mlc DESC, invoice.sku, invoice.inbound
+ORDER BY owner_name, invoice.mlc DESC, invoice.sku, invoice.inbound
 ;
               `)
 
