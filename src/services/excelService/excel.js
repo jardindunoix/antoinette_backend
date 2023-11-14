@@ -84,7 +84,7 @@ async function listInvoiceInfoDetail(invnumb) {
                         title,
                         permalink
                     FROM invoice WHERE invoice_number = '${invnumb}'
-                    ORDER BY mlc, sku, inbound
+                    ORDER BY mlc DESC, sku, inbound
                     ;
     `)
 
