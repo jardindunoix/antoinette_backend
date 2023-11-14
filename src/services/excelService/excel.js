@@ -66,13 +66,13 @@ async function listInvoicesData() {
 async function listInvoiceInfoDetail(invnumb) {
   try {
     const invData = await pool_pg.query(`
-                    SELECT
+SELECT
 invoice.invoice_number,
 invoice.invoice_date,
 invoice.invoice_terms,
 invoice.inbound,
 invoice.inbound_meli,
-upper(users.username),
+upper(users.username) AS owner_name,
 invoice.owner_id,
 invoice.seller_id,
 invoice.mlc,
@@ -91,9 +91,8 @@ ON trim(invoice.owner_id) = trim(users.owner_id)
 WHERE invoice.invoice_number = '${invnumb}'
 ORDER BY invoice.mlc DESC, invoice.sku, invoice.inbound
 ;
+              `)
 
-                        `)
-                        
 
     return invData.rows
   } catch (error) {
