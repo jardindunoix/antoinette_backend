@@ -83,13 +83,17 @@ invoice.price_meli,
 invoice.price_meli_date,
 invoice.currency,
 invoice.title,
-invoice.permalink
+invoice.permalink,
+invoice.sold_quantity,
+invoice.available_quantity,
+invoice.status,
+invoice.sub_status
 FROM invoice 
 LEFT JOIN
 users
 ON trim(invoice.owner_id) = trim(users.owner_id)
 WHERE invoice.invoice_number = '${invnumb}'
-ORDER BY owner_name, invoice.mlc DESC, invoice.sku, invoice.inbound
+ORDER BY invoice.mlc DESC, invoice.sku, invoice.inbound
 ;
               `)
 
