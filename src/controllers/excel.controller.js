@@ -26,11 +26,7 @@ const uploadInvoiceDoc = async (req, res) => {
 const getInvoiceData = async (req, res) => {
   try {
     const { invoiceNumber } = JSON.parse(JSON.stringify(req.body))
-
     const invData = await listInvoiceInfoDetail(invoiceNumber)
-
-    // console.table(invData)
-
     res.status(200).json({ response: invData });
   } catch (error) {
     res.status(200).json({ response: "error" });
