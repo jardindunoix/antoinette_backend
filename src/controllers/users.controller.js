@@ -607,7 +607,7 @@ const updateOrInsertRT = async (rt) => {
       await pool_pg.query(`delete from refresh_tokens where refresh_token ilike '%${rt.split('-')[2]}'`);
       /* if responds with an access token uses the RT in that response because  */
       if (vrt['data']['refresh_token']) {
-        await pool_pg.query(`insert into refresh_tokens (refresh_token) values ('${vrt['data']['refresh_token']}');`);
+        await pool_pg.query(`insert into refresh_tokens (refresh_token) values ('${vrt['data']['refresh_token'].trim()}');`);
       }
     }
   } catch (error) { console.log(`ERORR LLSSLSSL`, error); }
