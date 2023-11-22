@@ -30,10 +30,9 @@ const getPools = (req, res) => {
 const authLogin = (req, res) => {
   try {
     const { email, password, companyId } = req.body
-    console.log(email, password, "body")
     const email_ = email.toLowerCase()
     console.log(" -- POOLS -- ", email_, password, companyId)
-    const statusValue = email_ === "rgarrido@dhemax.com" && password === "Gigio.321" && companyId === "" ? 200 : 400
+    const statusValue = email_ === "rgarrido@dhemax.com" && password === "Gigio.321" && companyId === "2f9d6954" ? 200 : 400
     const resultlist = statusValue ? result_fake : []
     const token = statusValue ? "acb123" : ""
     res.status(statusValue).json({ "message": resultlist, "token": token })
