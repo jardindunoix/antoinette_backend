@@ -35,7 +35,7 @@ const authLogin = (req, res) => {
     const statusValue = email_ === "rgarrido@dhemax.com" && password === "Gigio.321" && companyId === "2f9d6954" ? 200 : 400
     const resultlist = statusValue ? result_fake : []
     const token = statusValue ? "acb123" : ""
-    res.status(statusValue).json({ "message": resultlist, "token": token })
+    res.status(statusValue).json({ "message": "ok", "token": token })
   } catch (error) {
     console.log('error', error)
     res.status(400).json([])
