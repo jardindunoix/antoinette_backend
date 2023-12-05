@@ -19,9 +19,6 @@ module.exports.getOperationsAfterGlobal = (a) => {
 
 module.exports.getOperationsAfterGlobalDDBB = async (a) => {
     try {
-        
-        console.log(a)
-
         return await pool_pg.query(`
         SELECT 
         item_mkpl_id,
