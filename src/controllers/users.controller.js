@@ -350,7 +350,7 @@ const getOperaciones = async (req, res) => {
 
     const data = {
       inventory_id: inventID,
-      seller_id: sell_Id.trim().split('-')[1],
+      seller_id: sell_Id.includes('-') ? sell_Id.trim().split('-')[1] : sell_Id,
       refToken,
       usrId: usr_id,
       mlcItem: mkpl_id
