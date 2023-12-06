@@ -84,7 +84,12 @@ const callOperations = (a) => {
 function returnOperation(a, b, c, d, e, f, g,) {
     (async function (urlBase, fecha1, fecha2, accTok, usrId, mlcItem, inventory_id) {
         try {
-            const sugarboo = await fetch.get(`${urlBase}${fecha1}&date_to=${fecha2}`, {
+
+            const URL_ = `${urlBase}${fecha1}&date_to=${fecha2}`
+
+            console.log(URL_)
+
+            const sugarboo = await fetch.get(URL_, {
                 headers: { "Content-Type": "application/json", Authorization: `Bearer ${accTok}` }
             }).then(async respo => {
                 if (respo)
