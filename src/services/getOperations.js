@@ -85,7 +85,7 @@ function returnOperation(a, b, c, d, e, f, g,) {
     (async function (urlBase, fecha1, fecha2, accTok, usrId, mlcItem, inventory_id) {
         try {
 
-            const URL_ = `${urlBase}${fecha1}&date_to=${fecha2}`
+            const URL_ = `${urlBase}${fecha1.replaceAll(' ', '')}&date_to=${fecha2.replaceAll(' ', '')}`
 
             console.log(URL_)
 
