@@ -67,7 +67,7 @@ const callOperations = (a) => {
             let fecha2 = getFechaHoy();
             let fecha1 = returnDate(fecha2, -60);
             const ciclesBack = 6; // 12
-            const timeDelay = 10000; // 250
+            const timeDelay = 15500; // 250
             (function recorreCiclos(n) {
                 if (n < ciclesBack && marker) {
                     returnOperation(urlBase, fecha1, fecha2, aToken, usrId, mlcItem, inventory_id);
