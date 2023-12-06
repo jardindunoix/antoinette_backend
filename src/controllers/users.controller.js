@@ -338,11 +338,8 @@ const sellerInvoiceDetails = async (req, res) => {
 /* list of operations */
 const getOperaciones = async (req, res) => {
   try {
-
     const data_ = JSON.parse(JSON.stringify(req.body))
-
     console.table(data_[0])
-
     const {
       usr_id,
       sell_Id,
@@ -361,8 +358,6 @@ const getOperaciones = async (req, res) => {
 
     await getOperationsAfterGlobal(data);
     res.status(200).send('ok');
-
-
   } catch (error) {
     console.log(`ERORR SUOER??`, error);
     res.status(200).send('error');
