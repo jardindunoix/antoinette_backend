@@ -84,9 +84,6 @@ const callOperations = (a) => {
 function returnOperation(a, b, c, d, e, f, g,) {
     (async function (urlBase, fecha1, fecha2, accTok, usrId, mlcItem, inventory_id) {
         try {
-
-            console.log(fecha1, fecha2, accTok, usrId, mlcItem, inventory_id)
-            console.log(`${urlBase}${fecha1}&date_to=${fecha2}`)
             const sugarboo = await fetch.get(`${urlBase}${fecha1}&date_to=${fecha2}`, {
                 headers: { "Content-Type": "application/json", Authorization: `Bearer ${accTok}` }
             }).then(async respo => {
