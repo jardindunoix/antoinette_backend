@@ -84,9 +84,9 @@ const callOperations = (a) => {
 function returnOperation(a, b, c, d, e, f, g,) {
     (async function (urlBase, fecha1, fecha2, accTok, usrId, mlcItem, inventory_id) {
         try {
-        
+
             console.log(fecha1, fecha2, accTok, usrId, mlcItem, inventory_id)
-        
+            console.log(`${urlBase}${fecha1}&date_to=${fecha2}`)
             const sugarboo = await fetch.get(`${urlBase}${fecha1}&date_to=${fecha2}`, {
                 headers: { "Content-Type": "application/json", Authorization: `Bearer ${accTok}` }
             }).then(async respo => {
@@ -103,7 +103,7 @@ function returnOperation(a, b, c, d, e, f, g,) {
             if (sugarboo) {
                 /* analisis_previo_operaciones */
                 console.log('sugarboo', sugarboo.paging.total,)
-                await insertTransitorio(`${sugarboo['paging']['total']}`, fecha1, fecha2, usrId, mlcItem, inventory_id);
+                await insertTransitorio(`${sugarboo['paging']['total']} `, fecha1, fecha2, usrId, mlcItem, inventory_id);
                 if (sugarboo['paging']['total'] > 0)
                     /* analisis_operaciones */
                     await insertData(sugarboo, fecha1, fecha2, usrId, mlcItem, inventory_id);
@@ -125,33 +125,33 @@ async function insertData(el, fecha1, fecha2, usrId, mlcItem, inventory_id) {
                     const fecha_ = returnFecha(fecha);
                     const fechaOrden = returnFechaOrden(fecha);
                     const columnsVar = `
-             aaa_user_id,
-             item_mkpl_id, 
-             fecha1, 
-             fecha2, 
-             ccc_paging_total,
-             paging_scroll, 
-             bbb_results_id, 
-             results_seller_id,
-             results_inventory_id, 
-             ddd_results_date_created,
-             date_created, 
-             fecha_orden, 
-             hhh_results_type,
-             eee_results_detail_available_quantity,
-             results_detail_not_available_quantity,
-             results_detail_not_available_detail,
-             fff_results_result_total,
-             results_result_available_quantity,
-             results_result_not_available_quantity,
-             results_result_not_available_detail,
-             results_external_references_type,
-             ggg_results_external_references_value,
-             filters,
-             available_filters,
-             sort,
-             available_sorts,
-             sku`;
+            aaa_user_id,
+                item_mkpl_id,
+                fecha1,
+                fecha2,
+                ccc_paging_total,
+                paging_scroll,
+                bbb_results_id,
+                results_seller_id,
+                results_inventory_id,
+                ddd_results_date_created,
+                date_created,
+                fecha_orden,
+                hhh_results_type,
+                eee_results_detail_available_quantity,
+                results_detail_not_available_quantity,
+                results_detail_not_available_detail,
+                fff_results_result_total,
+                results_result_available_quantity,
+                results_result_not_available_quantity,
+                results_result_not_available_detail,
+                results_external_references_type,
+                ggg_results_external_references_value,
+                filters,
+                available_filters,
+                sort,
+                available_sorts,
+                sku`;
 
                     const exterRef = ['sin ext ref', 'sin ext ref'];
 
@@ -203,36 +203,36 @@ async function insertData(el, fecha1, fecha2, usrId, mlcItem, inventory_id) {
                     });
 
                     await pool_pg.query(
-                        `insert into analisis_operaciones_temp (${columnsVar}) 
-                     values
-               (
-                '${usrId}', 
-                '${mlcItem}', 
-                '${fecha1}', 
-                '${fecha2}',
-                '${el['paging']['total']}', 
-                '${el['paging']['scroll']}',
-                '${elem['id']}', 
-                '${elem['seller_id']}', 
-                '${elem['inventory_id']}', 
-                '${elem['date_created'].split('Z')[0].replace('T', '').replace(':', '').replace(':', '').replace('-', '').replace('-', '')}',
-                '${fecha_}', 
-                ${fechaOrden},
-                '${elem['type']}', 
-                '${elem['detail']['available_quantity']}',
-                '${elem['detail']['not_available_quantity']}',
-                '${detailNotAvailableDetail}',
-                '${elem['result']['total']}', 
-                '${elem['result']['available_quantity']}', 
-                '${elem['result']['not_available_quantity']}',
-                '${resultNotAvailableDetail}',
-                '${exterRef[0]}', 
-                '${exterRef[1]}', 
-                '${filtersData}', 
-                '${availableFiltersData}', 
-                '${sortData}', 
-                '${availableSorts}', 
-                '${inventory_id}');`);
+                        `insert into analisis_operaciones_temp(${columnsVar})
+            values
+                (
+                    '${usrId}',
+                    '${mlcItem}',
+                    '${fecha1}',
+                    '${fecha2}',
+                    '${el['paging']['total']}',
+                    '${el['paging']['scroll']}',
+                    '${elem['id']}',
+                    '${elem['seller_id']}',
+                    '${elem['inventory_id']}',
+                    '${elem['date_created'].split('Z')[0].replace('T', '').replace(': ', '').replace(': ', '').replace(' - ', '').replace(' - ', '')}',
+                    '${fecha_}',
+                    ${fechaOrden},
+                    '${elem['type']}',
+                    '${elem['detail']['available_quantity']}',
+                    '${elem['detail']['not_available_quantity']}',
+                    '${detailNotAvailableDetail}',
+                    '${elem['result']['total']}',
+                    '${elem['result']['available_quantity']}',
+                    '${elem['result']['not_available_quantity']}',
+                    '${resultNotAvailableDetail}',
+                    '${exterRef[0]}',
+                    '${exterRef[1]}',
+                    '${filtersData}',
+                    '${availableFiltersData}',
+                    '${sortData}',
+                    '${availableSorts}',
+                    '${inventory_id}'); `);
 
                 } catch (error) { console.log(`shout loud`, error) }
             })
@@ -245,10 +245,10 @@ async function insertData(el, fecha1, fecha2, usrId, mlcItem, inventory_id) {
 
 async function insertTransitorio(a, b, c, d, e, f) {
     (async function (mensaje, fecha1, fecha2, usrId, mlcItem, inventory_id) {
-        await pool_pg.query(`insert into analisis_previo_operaciones_temp 
-      (mensaje,fecha1,fecha2,user_id,item, sku)
-      values
-      ('${mensaje}', '${fecha1}', '${fecha2}', '${usrId}', '${mlcItem}', '${inventory_id}');`)
+        await pool_pg.query(`insert into analisis_previo_operaciones_temp
+                (mensaje, fecha1, fecha2, user_id, item, sku)
+            values
+                ('${mensaje}', '${fecha1}', '${fecha2}', '${usrId}', '${mlcItem}', '${inventory_id}'); `)
     })(a, b, c, d, e, f);
 }
 
@@ -266,11 +266,11 @@ function returnFecha(f) {
     if (f[1] === '10') mes = 'oct'
     if (f[1] === '11') mes = 'nov'
     if (f[1] === '12') mes = 'dic'
-    return `${f[2]}-${mes}-${f[0]}`
+    return `${f[2]} -${mes} -${f[0]} `
 }
 
 function returnFechaOrden(f) {
-    return Number.parseInt(`${f[0]}${f[1]}${f[2]}${f[3]}${f[4]}`);
+    return Number.parseInt(`${f[0]}${f[1]}${f[2]}${f[3]}${f[4]} `);
 }
 
 function returnDate(fecha, suma) {
@@ -283,8 +283,8 @@ function getFechaHoy() {
     const f = new Date();
     let month = String(f.getMonth() + 1);
     let days = String(f.getDate());
-    if (month.length <= 1) { month = `0${month}` }
-    if (days.length <= 1) { days = `0${days}` }
-    const today = `${f.getFullYear()}-${month}-${days}`;
+    if (month.length <= 1) { month = `0${month} ` }
+    if (days.length <= 1) { days = `0${days} ` }
+    const today = `${f.getFullYear()} -${month} -${days} `;
     return String(today);
 }
