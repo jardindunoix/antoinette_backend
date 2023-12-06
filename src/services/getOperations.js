@@ -84,11 +84,7 @@ const callOperations = (a) => {
 function returnOperation(a, b, c, d, e, f, g,) {
     (async function (urlBase, fecha1, fecha2, accTok, usrId, mlcItem, inventory_id) {
         try {
-
             const URL_ = `${urlBase}${fecha1.replaceAll(' ', '')}&date_to=${fecha2.replaceAll(' ', '')}`
-
-            console.log(URL_)
-
             const sugarboo = await fetch.get(URL_, {
                 headers: { "Content-Type": "application/json", Authorization: `Bearer ${accTok}` }
             }).then(async respo => {
