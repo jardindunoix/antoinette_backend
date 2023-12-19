@@ -4,8 +4,8 @@ const result_fake =
       "id": 34,
       "pool_name": "BuenaVentura",
       "pool_address": "BuenaVentura 1770, Vitacura, RM",
-      "pool_latitude": 33.386494,
-      "pool_longitude": -125.567978,
+      "pool_latitude": 37.386494,
+      "pool_longitude": -105.567978,
       "stations":
         [
           {
