@@ -4,8 +4,8 @@ const result_fake =
       "id": 34,
       "pool_name": "BuenaVentura",
       "pool_address": "BuenaVentura 1770, Vitacura, RM",
-      "pool_latitude": -33.386494,
-      "pool_longitude": -70.567978,
+      "pool_latitude": 33.386494,
+      "pool_longitude": 70.567978,
       "stations":
         [
           {
@@ -77,126 +77,6 @@ const result_fake =
               }
             ]
           },
-          {
-            "id": 283,
-            "lineas_id": 36,
-            "station_name": "twbce_hu1_4920_007",
-            "station_alias": "BuenaVentura Vicuna",
-            "station_status": 1,
-            "station_identifier": 19000004,
-            "connectors": [
-              {
-                "id": 267,
-                "connector_name": "Manguera",
-                "connector_type": "EVPhysicalConnectorType_IEC_62196_COMBO",
-                "connector_type_alias": "CCS Combo 2",
-                "connector_status": "Offline"
-              },
-              {
-                "id": 268,
-                "connector_name": "Manguera",
-                "connector_type": "EVPhysicalConnectorType_CHADEMO",
-                "connector_type_alias": "CHAdeMO",
-                "connector_status": "Offline"
-              }
-            ]
-          },
-          {
-            "id": 283,
-            "lineas_id": 36,
-            "station_name": "twbce_hu1_4920_007",
-            "station_alias": "BuenaVentura Vicuna",
-            "station_status": 1,
-            "station_identifier": 19000004,
-            "connectors": [
-              {
-                "id": 267,
-                "connector_name": "Manguera",
-                "connector_type": "EVPhysicalConnectorType_IEC_62196_COMBO",
-                "connector_type_alias": "CCS Combo 2",
-                "connector_status": "Offline"
-              },
-              {
-                "id": 268,
-                "connector_name": "Manguera",
-                "connector_type": "EVPhysicalConnectorType_CHADEMO",
-                "connector_type_alias": "CHAdeMO",
-                "connector_status": "Offline"
-              }
-            ]
-          },
-          {
-            "id": 283,
-            "lineas_id": 36,
-            "station_name": "twbce_hu1_4920_007",
-            "station_alias": "BuenaVentura Vicuna",
-            "station_status": 1,
-            "station_identifier": 19000004,
-            "connectors": [
-              {
-                "id": 267,
-                "connector_name": "Manguera",
-                "connector_type": "EVPhysicalConnectorType_IEC_62196_COMBO",
-                "connector_type_alias": "CCS Combo 2",
-                "connector_status": "Offline"
-              },
-              {
-                "id": 268,
-                "connector_name": "Manguera",
-                "connector_type": "EVPhysicalConnectorType_CHADEMO",
-                "connector_type_alias": "CHAdeMO",
-                "connector_status": "Offline"
-              }
-            ]
-          },
-          {
-            "id": 283,
-            "lineas_id": 36,
-            "station_name": "twbce_hu1_4920_007",
-            "station_alias": "BuenaVentura Vicuna",
-            "station_status": 1,
-            "station_identifier": 19000004,
-            "connectors": [
-              {
-                "id": 267,
-                "connector_name": "Manguera",
-                "connector_type": "EVPhysicalConnectorType_IEC_62196_COMBO",
-                "connector_type_alias": "CCS Combo 2",
-                "connector_status": "Offline"
-              },
-              {
-                "id": 268,
-                "connector_name": "Manguera",
-                "connector_type": "EVPhysicalConnectorType_CHADEMO",
-                "connector_type_alias": "CHAdeMO",
-                "connector_status": "Offline"
-              }
-            ]
-          },
-          {
-            "id": 283,
-            "lineas_id": 36,
-            "station_name": "twbce_hu1_4920_007",
-            "station_alias": "BuenaVentura Vicuna",
-            "station_status": 1,
-            "station_identifier": 19000004,
-            "connectors": [
-              {
-                "id": 267,
-                "connector_name": "Manguera",
-                "connector_type": "EVPhysicalConnectorType_IEC_62196_COMBO",
-                "connector_type_alias": "CCS Combo 2",
-                "connector_status": "Offline"
-              },
-              {
-                "id": 268,
-                "connector_name": "Manguera",
-                "connector_type": "EVPhysicalConnectorType_CHADEMO",
-                "connector_type_alias": "CHAdeMO",
-                "connector_status": "Offline"
-              }
-            ]
-          }
         ],
     },
   ]

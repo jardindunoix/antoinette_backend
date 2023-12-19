@@ -73,7 +73,7 @@ const callOperations = (a) => {
                     returnOperation(urlBase, fecha1, fecha2, aToken, usrId, mlcItem, inventory_id);
                     fecha2 = fecha1;
                     fecha1 = returnDate(fecha2, -60);
-                    console.log((n + 1), "")
+                    console.log((n + 1), "");
                     setTimeout(recorreCiclos, timeDelay, (n + 1));
                 }
             }(0));

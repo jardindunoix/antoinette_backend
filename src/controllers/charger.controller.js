@@ -5,12 +5,9 @@ const { result_fake } = require('../services/charger/pools')
 const emailExists = async (req, res) => {
   try {
     const { email } = req.params
-    // console.log(req.params)
     const email_ = email.toLowerCase()
-    // console.log(`${email_ === "rgarrido@dhemax.com"} - ${email_} --`)
-    const statusValue = email_ === "rgarrido@dhemax.com" ? 200 : 400
-    // res.status(200).json({ "resp": (email_ === "rgarrido@dhemax.com") })
-    res.status(statusValue).json({ "resp": (email_ === "rgarrido@dhemax.com") })
+    const statusValue = email_ === "123@123.com" ? 200 : 400
+    res.status(statusValue).json({ "resp": (email_ === "123@123.com") })
   } catch (error) {
     console.log('error', error)
     res.status(400).json({ "resp": (email_ === false) })
@@ -32,7 +29,6 @@ const authLogin = (req, res) => {
     const { email, password, companyId } = req.body
     const email_ = email.toLowerCase()
     console.log(" -- POOLS -- ", email_, password, companyId)
-    const statusValue = email_ === "rgarrido@dhemax.com" && password === "Gigio.321" && companyId === "2f9d6954" ? 200 : 400
     const resultlist = statusValue ? result_fake : []
     const token = statusValue ? "acb123" : ""
     res.status(statusValue).json({ "message": "ok", "token": token })
@@ -42,13 +38,9 @@ const authLogin = (req, res) => {
   }
 }
 
-
-
-
 module.exports = {
   emailExists,
   getPools,
   authLogin,
 };
-
 
