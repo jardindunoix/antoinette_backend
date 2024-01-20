@@ -1,4 +1,4 @@
-require('./database')
+// require('./database')
 // const app = require('./app')
 const express = require('express');
 const cors = require('cors');
