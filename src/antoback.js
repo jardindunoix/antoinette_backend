@@ -3,16 +3,11 @@ require('./database')
 // const app = require('./app')
 const express = require('express');
 const cors = require('cors');
-const bodyParser = require('body-parser');
-const { url_base, url_base2 } = require('./constants');
-const { url_server, url_client } = require('./constants');
-const fileUpload = require('express-fileupload');
+// const bodyParser = require('body-parser');
+// const { url_base, url_base2 } = require('./constants');
+// const { url_server, url_client } = require('./constants');
+// const fileUpload = require('express-fileupload');
 
-
-
-const userRoutes = require('./routes/user.routes.js');
-const userDocs = require('./routes/documentation.routes.js');
-const excelInvoceRoute = require('./routes/excel.routes.js');
 const chargerRoute = require('./routes/charger.routes.js');
 const http = require('http');
 
@@ -56,8 +51,6 @@ app.use(express.json({ limit: '51000000000000mb', extended: true, parameterLimit
 
 /* routes */
 app.use('/api/users', userRoutes);
-app.use('/api/excel', excelInvoceRoute);
-app.use('/api/documentation', userDocs);
 app.use('/api/charger', chargerRoute);
 
 // const io = new Server(server, { cors: { origin: `${url_client}`, methods: ['GET', 'POST'] } });
@@ -88,4 +81,4 @@ app.use('/api/charger', chargerRoute);
 //app.listen(process.env.PORT);
 //console.log('Server on port', process.env.PORT)
 
-server.listen(process.env.PORT, () => console.log('WEB PAGE SERVER running in port ', process.env.PORT));
+server.listen(process.env.PORT, () => console.log('ANTO WEB PAGE SERVER running in port ', process.env.PORT));
