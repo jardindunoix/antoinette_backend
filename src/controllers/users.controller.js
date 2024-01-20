@@ -41,6 +41,7 @@ const { mailer } = require('../services/mailer/nodemailer');
 /* login */
 const loginUser = async (req, res) => {
   try {
+    // https://back.antoinette.cl/api/charger
     console.log('éntr')
     res.send('hello world')
   } catch (error) {
