@@ -41,9 +41,10 @@ const { mailer } = require('../services/mailer/nodemailer');
 /* login */
 const loginUser = async (req, res) => {
   try {
-    
+    console.log('éntr')
+    res.send('hello world')
   } catch (error) {
-    
+    console.log(error)
   }
   
 }
