@@ -1,4 +1,3 @@
-require('dotenv').config();
 const { Pool } = require( 'pg');
 
 exports.pool_pg = new Pool({
