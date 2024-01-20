@@ -1,4 +1,3 @@
-require('dotenv').config();
 require('./database')
 // const app = require('./app')
 const express = require('express');
@@ -51,7 +50,6 @@ app.use(express.json({ limit: '51000000000000mb', extended: true, parameterLimit
 //app.use(morgan('dev'))
 
 /* routes */
-app.use('/api/users', userRoutes);
 app.use('/api/charger', chargerRoute);
 
 // const io = new Server(server, { cors: { origin: `${url_client}`, methods: ['GET', 'POST'] } });
